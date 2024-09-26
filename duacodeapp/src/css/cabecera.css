@@ -53,18 +53,64 @@
     align-items: center; 
     justify-content: center; 
 }
-  .menu-actual{
-    font-weight:bold;
+
+
+.menu-item:hover .nav-url {
+  font-weight: bold; 
+}
+
+
+
+  .menu-item-empresa{
+    flex: 1;
+    cursor: pointer;
+    font-size: 1.2rem;
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    position: relative;
   }
-  .menu-item:hover {
-    font-weight:bold;
-  }
-  
-  /* Responsivo: para pantallas pequeñas */
-  @media (max-width: 768px) {
-    .nav-menu {
-      flex-direction: column;
-    }
-  
+
+
+  .submenu {
+    display: none; /* Oculto por defecto */
+    position: absolute;
+    top: 100%;
+    background-color: #684e54; 
+    z-index: 1;
 
   }
+
+  .submenu-item{
+    border-top:1px solid black;
+  }
+
+  /* Hover en submenú */
+  .submenu-item:hover .nav-url {
+  font-weight: bold; 
+  }
+
+
+  /* Submenú activo cuando se hace clic en "Empresa" */
+  .submenu.active {
+    display: block;
+
+
+  }
+
+  .menu-item-empresa.active{
+    font-weight: bold;
+  }
+  .bold{
+    font-weight: bold;
+  }
+
+
+    /* Responsive: para pantallas pequeñas */
+    @media (max-width: 768px) {
+      .nav-menu {
+        flex-direction: column;
+      }
+    
+  
+    }
