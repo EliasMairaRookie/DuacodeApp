@@ -1,0 +1,70 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+.header {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    
+  }
+
+  /* Estilo de la parte superior (logo y icono) */
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 20px;
+  }
+
+  a .icono{
+    text-decoration:none;
+    color:black;
+    font-size: 30px;
+  }
+
+  /* Estilos para el menú de navegación */
+  .nav-menu {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    border-top: 3px solid #DF1882;
+    border-bottom: 3px solid #DF1882;
+  }
+  
+  .menu-item {
+    flex: 1;
+    cursor: pointer;
+    font-size: 1.2rem;
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+}
+
+.nav-url {
+    padding:30px 2%;
+    text-decoration: none;
+    color: black;
+    width: 100%; 
+    height: 100%; 
+    display: flex; 
+    text-align: center;
+    align-items: center; 
+    justify-content: center; 
+}
+  .menu-actual{
+    font-weight:bold;
+  }
+  .menu-item:hover {
+    font-weight:bold;
+  }
+  
+  /* Responsivo: para pantallas pequeñas */
+  @media (max-width: 768px) {
+    .nav-menu {
+      flex-direction: column;
+    }
+  
+
+  }
