@@ -3,6 +3,7 @@ import logo from '../imagenes/logo-duacode-negro.svg';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Cabecera = () => {
   const [isSubmenuOpen, setIsSubmenuOpen] = useState(false);
@@ -12,47 +13,49 @@ const Cabecera = () => {
   };
 
   return (
+    
     <header className="header">
+      {/* CAMBIAR TODOS LOS A HREF(enlaces) POR LINK TO */}
       <div className="header-top">
         <div className="div-logo">
-          <a href="/" className='nav-url'>
+          <Link to="/" className='nav-url'>
             <img src={logo} alt="Logo" className='logo' />
-          </a>
+          </Link>
         </div>
         <div className="icon">
-          <a href="/ajustes" className='nav-url'>
+          <Link to="/ajustes" className='nav-url'>
             <FontAwesomeIcon icon={faBars} className='icono' />
-          </a>
+          </Link>
         </div>
       </div>
 
       <nav className="nav-menu">
         <div className="menu-item">
-          <a href="/*" className='nav-url'>Empleados</a>
+          <a href="/empleados" className='nav-url'>Empleados</a>
         </div>
         {/* Empresa con submenú */}
         <div className={`menu-item-empresa ${isSubmenuOpen ? 'bold' : ''}`} onClick={toggleSubmenu}>
           <span>Empresa</span>
           <div className={`submenu ${isSubmenuOpen ? 'active' : ''}`}>
             <div className="submenu-item">
-              <a href='/*' className='nav-url'>Eventos</a>
+              <a href='/eventos' className='nav-url'>Eventos</a>
             </div>
             <div className="submenu-item">
-              <a href='/*' className='nav-url'>Noticias y comunicados</a>
+              <a href='/noticiasComunicados' className='nav-url'>Noticias y comunicados</a>
             </div>
             <div className="submenu-item">
-              <a href='/*' className='nav-url'>Proyectos y clientes</a>
+              <a href='/ProyectosClientes' className='nav-url'>Proyectos y clientes</a>
             </div>
           </div>
         </div>
         <div className="menu-item">
-          <a href="/*" className='nav-url'>Distribución de salas e Info</a>
+          <a href="/distribucionInfo" className='nav-url'>Distribución de salas e Info</a>
         </div>
         <div className="menu-item">
-          <a href="/*" className='nav-url'>Calendario</a>
+          <a href="/calendario" className='nav-url'>Calendario</a>
         </div>
         <div className="menu-item">
-          <a href="/*" className='nav-url'>Protocolos</a>
+          <a href="/protocolos" className='nav-url'>Protocolos</a>
         </div>
       </nav>
     </header>
