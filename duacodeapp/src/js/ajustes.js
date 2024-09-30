@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import '../css/ajustes.css';
 import logo from '../imagenes/logo-duacode-negro.svg';
+import { Link } from 'react-router-dom';
 
 
 function Ajustes() {
