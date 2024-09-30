@@ -94,8 +94,7 @@
   /* Submenú activo cuando se hace clic en "Empresa" */
   .submenu.active {
     display: block;
-
-
+    z-index: 2;
   }
 
   .menu-item-empresa.active{
