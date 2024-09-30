@@ -16,12 +16,12 @@ function Ajustes() {
       <div className='cabecerajustes'></div>
     <div className="container">
       <aside className="sidebar">
-      <a href="/" className='nav-url'><img src={logo} alt="Logo" className='logo'/></a>
+      <Link to="/" className='nav-url'><img src={logo} alt="Logo" className='logo'/></Link>
         <ul>
-          <li><a href='/*'><strong>Cambiar de oficina</strong></a></li>
-          <li><a href='/*'>Cuenta de administrador</a></li>
-          <li><a href='/*'>etc</a></li>
-          <li><a href='/*'>etc</a></li>
+          <li><Link to='/*'><strong>Cambiar de oficina</strong></Link></li>
+          <li><Link to='/*'>Cuenta de administrador</Link></li>
+          <li><Link to='/*'>etc</Link></li>
+          <li><Link to='/*'>etc</Link></li>
         </ul>
       </aside>
       

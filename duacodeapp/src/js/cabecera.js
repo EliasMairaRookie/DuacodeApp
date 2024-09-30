@@ -31,31 +31,31 @@ const Cabecera = () => {
 
       <nav className="nav-menu">
         <div className="menu-item">
-          <a href="/empleados" className='nav-url'>Empleados</a>
+          <Link to="/empleados" className='nav-url'>Empleados</Link>
         </div>
         {/* Empresa con submenú */}
         <div className={`menu-item-empresa ${isSubmenuOpen ? 'bold' : ''}`} onClick={toggleSubmenu}>
           <span>Empresa</span>
           <div className={`submenu ${isSubmenuOpen ? 'active' : ''}`}>
             <div className="submenu-item">
-              <a href='/eventos' className='nav-url'>Eventos</a>
+              <Link to='/eventos' className='nav-url'>Eventos</Link>
             </div>
             <div className="submenu-item">
-              <a href='/noticiasComunicados' className='nav-url'>Noticias y comunicados</a>
+              <Link to='/noticiasComunicados' className='nav-url'>Noticias y comunicados</Link>
             </div>
             <div className="submenu-item">
-              <a href='/ProyectosClientes' className='nav-url'>Proyectos y clientes</a>
+              <Link to='/ProyectosClientes' className='nav-url'>Proyectos y clientes</Link>
             </div>
           </div>
         </div>
         <div className="menu-item">
-          <a href="/distribucionInfo" className='nav-url'>Distribución de salas e Info</a>
+          <Link to="/distribucionInfo" className='nav-url'>Distribución de salas e Info</Link>
         </div>
         <div className="menu-item">
-          <a href="/calendario" className='nav-url'>Calendario</a>
+          <Link to="/calendario" className='nav-url'>Calendario</Link>
         </div>
         <div className="menu-item">
-          <a href="/protocolos" className='nav-url'>Protocolos</a>
+          <Link to="/protocolos" className='nav-url'>Protocolos</Link>
         </div>
       </nav>
     </header>
