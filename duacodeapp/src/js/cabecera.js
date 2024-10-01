@@ -5,11 +5,13 @@ import { faBars } from "@fortawesome/free-solid-svg-icons";
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
+
+
 const Cabecera = () => {
   const [isSubmenuOpen, setIsSubmenuOpen] = useState(false);
 
   const toggleSubmenu = () => {
-    setIsSubmenuOpen(prevState => !prevState);
+    setIsSubmenuOpen(!isSubmenuOpen);
   };
 
   return (

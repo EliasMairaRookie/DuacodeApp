@@ -12,10 +12,10 @@ const Calendario=()=> {
 
 const [weekendsVisible, setWeekendVisible]=useState(true)
 
-    function botonMostrarSemanas(){
-        setWeekendVisible(!weekendsVisible)
+function botonMostrarSemanas(){
+    setWeekendVisible(!weekendsVisible)
         
-    }
+}
 
     return (
         <div className='PaginaCalendario'>
@@ -67,9 +67,6 @@ const [weekendsVisible, setWeekendVisible]=useState(true)
         </div>
     )
 }
-
-
-  
 
   export default Calendario;
   

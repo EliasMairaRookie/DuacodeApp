@@ -1,15 +1,14 @@
 import './App.css';
-import Cabecera from './js/cabecera.js';
 import Inicio from './js/Inicio.js'
 import NotFound from './js/NotFound';
 import Ajustes from './js/ajustes.js';
-import Empleados from './js/empleados.js'
+import Empleados from './js/empleados/empleados.js'
 import DistribucionInfo from './js/distribucionInfo.js';
 import Protocolos from './js/protocolos.js';
 import {BrowserRouter, Routes, Route} from 'react-router-dom'; 
 import Calendario from './js/calendario.js';
 
-
+import PruebaAxios from './js/pruebaaxios';
 
 
 function App() {
@@ -26,6 +25,7 @@ function App() {
         <Route path="/distribucionInfo" element={< DistribucionInfo/>} />
         <Route path="/calendario" element={< Calendario/>} />
         <Route path="/protocolos" element={< Protocolos/>} />
+        <Route path="/prueba" element={< PruebaAxios/>} />
         <Route path="/*" element={<NotFound />} /> {/* Ruta para 404 */}
       </Routes>
     </BrowserRouter>   
