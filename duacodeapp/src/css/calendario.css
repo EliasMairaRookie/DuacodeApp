@@ -19,6 +19,13 @@
     padding:20px;
   }
 
-
+  .inputBuscarCalendario{
+    display: flex;
+    width: 50% !important;
+    height: 25px;
+    align-items: center;
+    justify-content: center;
+  
+  }
   
   

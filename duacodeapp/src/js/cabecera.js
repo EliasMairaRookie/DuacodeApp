@@ -10,14 +10,17 @@ import { Link } from 'react-router-dom';
 const Cabecera = () => {
   const [isSubmenuOpen, setIsSubmenuOpen] = useState(false);
 
+
+  console.log(isSubmenuOpen)
+
   const toggleSubmenu = () => {
-    setIsSubmenuOpen(!isSubmenuOpen);
+    
+    setIsSubmenuOpen(prevState => !prevState);
   };
 
   return (
     
     <header className="header">
-      {/* CAMBIAR TODOS LOS A HREF(enlaces) POR LINK TO */}
       <div className="header-top">
         <div className="div-logo">
           <Link to="/" className='nav-url'>

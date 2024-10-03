@@ -7,8 +7,8 @@ import DistribucionInfo from './js/distribucionInfo.js';
 import Protocolos from './js/protocolos.js';
 import {BrowserRouter, Routes, Route} from 'react-router-dom'; 
 import Calendario from './js/calendario.js';
-
 import PruebaAxios from './js/pruebaaxios';
+import EmpleadoEspecifico from './js/empleados/empleadoEspecifico.js';
 
 
 function App() {
@@ -25,7 +25,7 @@ function App() {
         <Route path="/distribucionInfo" element={< DistribucionInfo/>} />
         <Route path="/calendario" element={< Calendario/>} />
         <Route path="/protocolos" element={< Protocolos/>} />
-        <Route path="/prueba" element={< PruebaAxios/>} />
+        <Route path="/empleados/:X" element={<EmpleadoEspecifico/>}/>
         <Route path="/*" element={<NotFound />} /> {/* Ruta para 404 */}
       </Routes>
     </BrowserRouter>   
