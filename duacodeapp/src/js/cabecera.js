@@ -2,21 +2,33 @@ import '../css/cabecera.css';
 import logo from '../imagenes/logo-duacode-negro.svg';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
-import React, { useState } from 'react';
+import React, { useState ,useEffect,useRef } from 'react';
+
 import { Link } from 'react-router-dom';
 
 
 
 const Cabecera = () => {
   const [isSubmenuOpen, setIsSubmenuOpen] = useState(false);
+  let menuRef =useRef();
 
-
-  console.log(isSubmenuOpen)
-
-  const toggleSubmenu = () => {
+  useEffect(()=>{
     
-    setIsSubmenuOpen(prevState => !prevState);
-  };
+    let handler =(e)=>{
+      if(!menuRef.current.contains(e.target)){
+        setIsSubmenuOpen(false);
+      }
+      
+    };
+      
+    document.addEventListener("mousedown",handler);
+
+    return()=>{
+      document.removeEventListener("mousedown",handler);
+    }
+  });
+
+
 
   return (
     
@@ -28,9 +40,9 @@ const Cabecera = () => {
           </Link>
         </div>
         <div className="icon">
-          <Link to="/ajustes" className='nav-url'>
+          <a href="/ajustes" className='nav-url'>
             <FontAwesomeIcon icon={faBars} className='icono' />
-          </Link>
+          </a>
         </div>
       </div>
 
@@ -39,17 +51,20 @@ const Cabecera = () => {
           <Link to="/empleados" className='nav-url'>Empleados</Link>
         </div>
         {/* Empresa con submenú */}
-        <div className={`menu-item-empresa ${isSubmenuOpen ? 'bold' : ''}`} onClick={toggleSubmenu}>
+        <div className={`menu-item-empresa ${isSubmenuOpen ? 'bold' : ''}`} onClick={()=>{setIsSubmenuOpen(!isSubmenuOpen)}} ref={menuRef} >
           <span>Empresa</span>
-          <div className={`submenu ${isSubmenuOpen ? 'active' : ''}`}>
-            <div className="submenu-item">
-              <Link to='/eventos' className='nav-url'>Eventos</Link>
+          <div className={`submenu ${isSubmenuOpen ? 'active' : ''}`} >
+          <div className="submenu-item">
+              <Link to='/empresa/informacionEmpresa' className='nav-url'>informacionEmpresa</Link>
             </div>
             <div className="submenu-item">
-              <Link to='/noticiasComunicados' className='nav-url'>Noticias y comunicados</Link>
+              <Link to='/empresa/eventos' className='nav-url'>Eventos</Link>
             </div>
             <div className="submenu-item">
-              <Link to='/ProyectosClientes' className='nav-url'>Proyectos y clientes</Link>
+              <Link to='/empresa/noticiasComunicados' className='nav-url'>Noticias y comunicados</Link>
+            </div>
+            <div className="submenu-item">
+              <Link to='/empresa/proyectosClientes' className='nav-url'>Proyectos y clientes</Link>
             </div>
           </div>
         </div>

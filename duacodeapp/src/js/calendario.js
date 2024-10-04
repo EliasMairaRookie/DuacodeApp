@@ -66,8 +66,7 @@ if (hasError){
 
 const filtrar=(terminoBusqueda)=>{
   var ResultadosBusqueda=dataCalendarFiltrada.filter((elemento)=>{
-    if (elemento.title.toString().toLowerCase().includes(terminoBusqueda.toLowerCase())||
-        elemento.eventId.toString().toLowerCase().includes(terminoBusqueda.toLowerCase())){
+    if (elemento.title.toString().toLowerCase().includes(terminoBusqueda.toLowerCase())){
       return elemento;
     }
   });

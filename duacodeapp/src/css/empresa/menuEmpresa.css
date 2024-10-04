@@ -1,0 +1,28 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+.menuEmpresa {
+    text-align: center;
+
+}
+
+.menuEmpresa ul {
+    list-style: none;
+
+}
+
+.menuEmpresa ul li {
+    padding: 25px 0;
+    border-bottom: 1px solid #e0e0e0;
+    font-size: 1.2rem;
+}
+
+
+
+
+
+
+

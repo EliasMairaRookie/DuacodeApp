@@ -17,15 +17,15 @@
 .calendario {
     width: 75%;
     padding:20px;
+    z-index: -1;
   }
 
   .inputBuscarCalendario{
     display: flex;
-    width: 50% !important;
+     width: 50% !important;
     height: 25px;
     align-items: center;
     justify-content: center;
   
   }
-  
   
