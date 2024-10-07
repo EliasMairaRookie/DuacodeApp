@@ -10,8 +10,12 @@ import Calendario from './js/calendario.js';
 import EmpleadoEspecifico from './js/empleados/empleadoEspecifico.js';
 import InformacionEmpresa from './js/empresa/informacionEmpresa.js';
 import Eventos from './js/empresa/eventos.js';
-import NoticiasComunicados from './js/empresa/noticiasComunicados.js';
-import ProyectosClientes from './js/empresa/proyectosClientes.js';
+import NoticiasComunicados from './js/empresa/noticiasYComunicados/noticiasComunicados.js';
+import ProyectosClientes from './js/empresa/proyectosYClientes/proyectosClientes.js';
+import Comunicados from './js/empresa/noticiasYComunicados/comunicados.js';
+import Noticias from './js/empresa/noticiasYComunicados/noticias.js';
+import ProyectosAntiguos from './js/empresa/proyectosYClientes/proyectosAntiguos.js';
+import ProyectosActuales from './js/empresa/proyectosYClientes/proyectosActuales.js';
 
 function App() {
   return (
@@ -24,7 +28,15 @@ function App() {
         <Route path="/empresa/informacionEmpresa" element={< InformacionEmpresa/>} />
         <Route path="/empresa/eventos" element={< Eventos/>} />
         <Route path="/empresa/noticiasComunicados" element={< NoticiasComunicados/>} />
+
+        <Route path="/empresa/noticiasComunicados/noticias" element={<Noticias/>} />
+        <Route path="/empresa/noticiasComunicados/comunicados" element={<Comunicados/>} />
+
         <Route path="/empresa/proyectosClientes" element={< ProyectosClientes/>} />
+
+        <Route path="/empresa/proyectosClientes/antiguos" element={<ProyectosAntiguos/>} />
+        <Route path="/empresa/proyectosClientes/actuales" element={<ProyectosActuales/>} />
+
         <Route path="/distribucionInfo" element={< DistribucionInfo/>} />
         <Route path="/calendario" element={< Calendario/>} />
         <Route path="/protocolos" element={< Protocolos/>} />

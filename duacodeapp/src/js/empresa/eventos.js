@@ -1,26 +1,89 @@
 import MenuEmpresa from "./menuEmpresa";
 import Cabecera from "../cabecera";
 import '../../css/empresa/eventos.css';
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const Eventos = () => {
+    const [dataEventos, setDataEventos] = useState([]);
+    const [hasError, setHasError] = useState(false);
+
+    const peticion_eventos = async () => {
+        try {
+            const response = await axios.get('http://127.0.0.1:8000/event/');
+            console.log("Datos de eventos:", response.data);
+            setDataEventos(response.data);
+            setHasError(false);
+        } catch (error) {
+            console.error('Error al recuperar los datos:', error);
+            setHasError(true);
+        }
+    };
+
+    useEffect(() => {
+        peticion_eventos();
+    }, []);
+
+    if (hasError) {
+        return (
+            <div>
+                <Cabecera />
+                <p>Puede que el servidor esté apagado o exista algún problema con el</p>
+            </div>
+        );
+    }
+
+    const fechaActual = new Date();
+    console.log("Fecha actual:", fechaActual);
+
+    const eventosFuturos = dataEventos
+        .filter(evento => {
+            console.log("Verificando evento:", evento); // Agregar este log para ver la estructura del objeto
+            const fechaEvento = new Date(evento.date_start); // Asegurarse de que el nombre es correcto
+            console.log(`Fecha del evento "${evento.title}":`, fechaEvento); // Comprobar si la fecha se interpreta correctamente
+            return fechaEvento > fechaActual;
+        })
+        .sort((a, b) => new Date(a.date_start) - new Date(b.date_start));
+
+    const eventoMasCercano = eventosFuturos.length > 0 ? eventosFuturos[0] : null;
+    const eventosRestantes = eventosFuturos.slice(1);
 
     return (
         <div className="informacionEmpleados">
-            <Cabecera></Cabecera>
+            <Cabecera />
             <div className="menu-infoImportante">
                 <div className='ordenar'>
-                    <MenuEmpresa></MenuEmpresa>
+                    <MenuEmpresa />
                 </div>
                 <div className="informacion-lateralMenu">
-                    <p>En Duacode, nos dedicamos al desarrollo de software y soluciones tecnológicas innovadoras. Nuestro enfoque principal es crear herramientas que mejoren la eficiencia interna de las empresas, adaptándonos a las necesidades específicas de cada cliente. Nos enorgullecemos de ofrecer productos personalizados y de alta calidad, que van desde aplicaciones de gestión empresarial hasta plataformas de comunicación interna.</p>
+                    {eventoMasCercano ? (
+                        <div>
+                            <h2>Próximo evento</h2>
+                            <p>{eventoMasCercano.title}</p>
+                            <p>{new Date(eventoMasCercano.date_start).toLocaleString()}</p>
+                            <p>{eventoMasCercano.content}</p>
+                        </div>
+                    ) : (
+                        <p>No hay eventos futuros disponibles.</p>
+                    )}
                 </div>
             </div>
             <div className="informacionExtra">
-                <p>Contamos con oficinas en varios puntos clave, lo que nos permite estar cerca de nuestros clientes y entender mejor sus necesidades. Nuestras sedes principales están en Madrid, desde donde coordinamos la mayor parte de nuestros proyectos, pero también tenemos presencia en otras ciudades, lo que nos permite colaborar con empresas a nivel nacional e internacional.</p>
-                <p>Estamos muy involucrados en el mundo deportivo, ya que creemos firmemente en los valores que el deporte representa: esfuerzo, trabajo en equipo y superación. Por eso, somos patrocinadores activos de diferentes eventos y equipos deportivos. Esto no solo refuerza nuestra identidad como empresa, sino que también nos permite conectar con la comunidad de una manera significativa, apoyando iniciativas que promueven la salud y el bienestar.</p>
+                <h2>Próximos eventos</h2>
+                {eventosRestantes.length > 0 ? (
+                    eventosRestantes.map((evento, index) => (
+                        <div key={index}>
+                            <p>{evento.title}</p>
+                            <p>{new Date(evento.date_start).toLocaleString()}</p>
+                            <p>{evento.content}</p>
+                        </div>
+                    ))
+                ) : (
+                    <p>No hay más eventos futuros.</p>
+                )}
             </div>
-
         </div>
     );
 }
-export default Eventos; 
+
+export default Eventos;
