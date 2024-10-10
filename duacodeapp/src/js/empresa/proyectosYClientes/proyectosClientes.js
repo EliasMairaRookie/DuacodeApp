@@ -1,6 +1,6 @@
 import MenuEmpresa from "../menuEmpresa";
 import Cabecera from "../../cabecera";
-import '../../../css/empresa/proyectosClientes.css';
+import '../../../css/empresa/proyectosClientes/proyectosClientes.css';
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { useState } from "react";
@@ -88,6 +88,7 @@ const ProyectosClientes = () => {
                         </div></Link>
                 </div>
                 <div className="informacionExtra">
+                    <h1>Clientes</h1>
                     {dataClientes.map((cliente) => (
   
                             <div>

@@ -4,7 +4,7 @@ import NotFound from './js/NotFound';
 import Ajustes from './js/ajustes.js';
 import Empleados from './js/empleados/empleados.js'
 import DistribucionInfo from './js/distribucionInfo.js';
-import Protocolos from './js/protocolos.js';
+import Protocolos from './js/protocolos/protocolos.js';
 import {BrowserRouter, Routes, Route} from 'react-router-dom'; 
 import Calendario from './js/calendario.js';
 import EmpleadoEspecifico from './js/empleados/empleadoEspecifico.js';
@@ -16,6 +16,8 @@ import Comunicados from './js/empresa/noticiasYComunicados/comunicados.js';
 import Noticias from './js/empresa/noticiasYComunicados/noticias.js';
 import ProyectosAntiguos from './js/empresa/proyectosYClientes/proyectosAntiguos.js';
 import ProyectosActuales from './js/empresa/proyectosYClientes/proyectosActuales.js';
+
+
 
 function App() {
   return (
