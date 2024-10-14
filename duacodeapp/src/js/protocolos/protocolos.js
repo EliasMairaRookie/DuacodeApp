@@ -3,7 +3,7 @@ import axios from 'axios';
 import Cabecera from '../cabecera';
 import { pdfjs } from 'react-pdf';
 import PdfComp from './pdfComp';
-
+import 'react-pdf/dist/Page/AnnotationLayer.css';
 
 pdfjs.GlobalWorkerOptions.workerSrc = new URL(
     'pdfjs-dist/build/pdf.worker.min.mjs',
@@ -18,6 +18,7 @@ const Protocolos = () => {
     const peticion_protocolos = async () => {
         try {
             const response = await axios.get('http://127.0.0.1:8000/protocol/');
+            console.log(response.data);
             setPdfFiles(response.data);
             setHasError(false);
         } catch (error) {
@@ -34,7 +35,7 @@ const Protocolos = () => {
         return (
             <div>
                 <Cabecera />
-                <p>Puede que el servidor esté apagado o exista algún problema con el</p>
+                <p>Puede que el servidor esté apagado o exista algún problema con el servidor</p>
             </div>
         );
     }
@@ -46,7 +47,7 @@ const Protocolos = () => {
                 {pdfFiles.map(pdf => (
                     <div key={pdf.protocol_id}>
                         <h3>{pdf.title}</h3>
-                        <button onClick={() => setSelectedPdf(pdf.content)}>
+                        <button onClick={() => setSelectedPdf(pdf.protocol_id)}>
                             Mostrar
                         </button>
                     </div>
@@ -54,7 +55,7 @@ const Protocolos = () => {
             </div>
             {selectedPdf && (
                 <div>
-                    <PdfComp file={selectedPdf} />
+                    <PdfComp id={selectedPdf} />
                 </div>
             )}
         </div>

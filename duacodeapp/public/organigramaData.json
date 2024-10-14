@@ -1,0 +1,108 @@
+{
+  "general_director": {
+    "name": "María García",
+    "photo": "url_a_foto_director_general",
+    "departments": {
+      "human_resources": {
+        "name": "Laura Fernández",
+        "photo": "url_a_foto_jefe_rrhh",
+        "subordinates": {
+          "human_resources_manager": {
+            "name": "Carlos Gómez",
+            "photo": "url_a_foto_manager_rrhh",
+            "employees": [
+              {
+                "name": "Ana López",
+                "photo": "url_a_foto_empleado1_rrhh"
+              },
+              {
+                "name": "Pedro Rodríguez",
+                "photo": "url_a_foto_empleado2_rrhh"
+              }
+            ]
+          }
+        }
+      },
+      "sales_team": {
+        "name": "Sofía Martínez",
+        "photo": "url_a_foto_jefe_ventas",
+        "subordinates": {
+          "sales_manager": {
+            "name": "Javier Díaz",
+            "photo": "url_a_foto_manager_ventas",
+            "employees": [
+              {
+                "name": "Lucía Ortega",
+                "photo": "url_a_foto_empleado1_ventas"
+              },
+              {
+                "name": "Raúl Pérez",
+                "photo": "url_a_foto_empleado2_ventas"
+              }
+            ]
+          }
+        }
+      },
+      "front_end_development": {
+        "name": "Elena Ruiz",
+        "photo": "url_a_foto_jefe_front",
+        "subordinates": {
+          "front_end_manager": {
+            "name": "Tomás Morales",
+            "photo": "url_a_foto_manager_front",
+            "developers": [
+              {
+                "name": "Clara Hernández",
+                "photo": "url_a_foto_dev1_front"
+              },
+              {
+                "name": "Luis Blanco",
+                "photo": "url_a_foto_dev2_front"
+              }
+            ]
+          }
+        }
+      },
+      "back_end_development": {
+        "name": "Miguel Torres",
+        "photo": "url_a_foto_jefe_back",
+        "subordinates": {
+          "back_end_manager": {
+            "name": "Isabel Soto",
+            "photo": "url_a_foto_manager_back",
+            "developers": [
+              {
+                "name": "David Romero",
+                "photo": "url_a_foto_dev1_back"
+              },
+              {
+                "name": "Sara Jiménez",
+                "photo": "url_a_foto_dev2_back"
+              }
+            ]
+          }
+        }
+      },
+      "it_support": {
+        "name": "Juan Navarro",
+        "photo": "url_a_foto_jefe_it",
+        "subordinates": {
+          "it_support_manager": {
+            "name": "Nerea Vázquez",
+            "photo": "url_a_foto_manager_it",
+            "technicians": [
+              {
+                "name": "Alberto Ruiz",
+                "photo": "url_a_foto_tec1_it"
+              },
+              {
+                "name": "Marta Gil",
+                "photo": "url_a_foto_tec2_it"
+              }
+            ]
+          }
+        }
+      }
+    }
+  }
+}

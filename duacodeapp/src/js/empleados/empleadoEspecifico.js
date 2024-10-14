@@ -2,6 +2,7 @@ import Cabecera from "../cabecera";
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const EmpleadoEspecifico = () => {
   const [employee, setEmployee] = useState([]);
@@ -57,6 +58,7 @@ const EmpleadoEspecifico = () => {
             <p><strong>Status:</strong> {employee.status}</p>
           </div>
       ))}
+      <button><Link to='/empleados'>Volver</Link></button>
     </div>
   );
 };

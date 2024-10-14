@@ -3,7 +3,7 @@ import Inicio from './js/Inicio.js'
 import NotFound from './js/NotFound';
 import Ajustes from './js/ajustes.js';
 import Empleados from './js/empleados/empleados.js'
-import DistribucionInfo from './js/distribucionInfo.js';
+import DistribucionInfo from './js/distribucionInfo/distribucionInfo.js';
 import Protocolos from './js/protocolos/protocolos.js';
 import {BrowserRouter, Routes, Route} from 'react-router-dom'; 
 import Calendario from './js/calendario.js';
@@ -16,6 +16,7 @@ import Comunicados from './js/empresa/noticiasYComunicados/comunicados.js';
 import Noticias from './js/empresa/noticiasYComunicados/noticias.js';
 import ProyectosAntiguos from './js/empresa/proyectosYClientes/proyectosAntiguos.js';
 import ProyectosActuales from './js/empresa/proyectosYClientes/proyectosActuales.js';
+import OrganizationChart from './js/empleados/organigrama/organigrama.js';
 
 
 
@@ -27,6 +28,9 @@ function App() {
       <Route path="/" element={< Inicio/>} />
         <Route path="/ajustes" element={< Ajustes/>} />
         <Route path="/empleados" element={< Empleados/>} />
+        <Route path="/organigrama" element={< OrganizationChart/>} />
+        
+
         <Route path="/empresa/informacionEmpresa" element={< InformacionEmpresa/>} />
         <Route path="/empresa/eventos" element={< Eventos/>} />
         <Route path="/empresa/noticiasComunicados" element={< NoticiasComunicados/>} />
