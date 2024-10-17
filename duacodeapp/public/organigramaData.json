@@ -1,103 +1,124 @@
 {
   "general_director": {
-    "name": "María García",
-    "photo": "url_a_foto_director_general",
+    "name": "Mario García",
+    "photo": "../src/imagenes/logo-duacode-negro.svg",
+    "position": "Director General",
     "departments": {
-      "human_resources": {
+      "human_resources boss": {
         "name": "Laura Fernández",
-        "photo": "url_a_foto_jefe_rrhh",
+        "photo": "../src/imagenes/logo-duacode-negro.svg",
+        "position": "Head of HR",
         "subordinates": {
           "human_resources_manager": {
             "name": "Carlos Gómez",
-            "photo": "url_a_foto_manager_rrhh",
+            "photo": "../src/imagenes/logo-duacode-negro.svg",
+            "position": "HR Manager",
             "employees": [
               {
                 "name": "Ana López",
-                "photo": "url_a_foto_empleado1_rrhh"
+                "photo": "../src/imagenes/logo-duacode-negro.svg",
+                "position": "HR Specialist"
               },
               {
                 "name": "Pedro Rodríguez",
-                "photo": "url_a_foto_empleado2_rrhh"
+                "photo": "../src/imagenes/logo-duacode-negro.svg",
+                "position": "HR Assistant"
               }
             ]
           }
         }
       },
-      "sales_team": {
+      "sales_team boss": {
         "name": "Sofía Martínez",
-        "photo": "url_a_foto_jefe_ventas",
+        "photo": "../src/imagenes/logo-duacode-negro.svg",
+        "position": "Head of Sales",
         "subordinates": {
           "sales_manager": {
             "name": "Javier Díaz",
-            "photo": "url_a_foto_manager_ventas",
+            "photo": "../src/imagenes/logo-duacode-negro.svg",
+            "position": "Sales Manager",
             "employees": [
               {
                 "name": "Lucía Ortega",
-                "photo": "url_a_foto_empleado1_ventas"
+                "photo": "../src/imagenes/logo-duacode-negro.svg",
+                "position": "Sales Representative"
               },
               {
                 "name": "Raúl Pérez",
-                "photo": "url_a_foto_empleado2_ventas"
+                "photo": "../src/imagenes/logo-duacode-negro.svg",
+                "position": "Sales Associate"
               }
             ]
           }
         }
       },
-      "front_end_development": {
+      "front_end_development boss": {
         "name": "Elena Ruiz",
-        "photo": "url_a_foto_jefe_front",
+        "photo": "../src/imagenes/logo-duacode-negro.svg",
+        "position": "Head of Front-End Development",
         "subordinates": {
           "front_end_manager": {
             "name": "Tomás Morales",
-            "photo": "url_a_foto_manager_front",
+            "photo": "../src/imagenes/logo-duacode-negro.svg",
+            "position": "Front-End Manager",
             "developers": [
               {
                 "name": "Clara Hernández",
-                "photo": "url_a_foto_dev1_front"
+                "photo": "../src/imagenes/logo-duacode-negro.svg",
+                "position": "Front-End Developer"
               },
               {
                 "name": "Luis Blanco",
-                "photo": "url_a_foto_dev2_front"
+                "photo": "../src/imagenes/logo-duacode-negro.svg",
+                "position": "Junior Front-End Developer"
               }
             ]
           }
         }
       },
-      "back_end_development": {
+      "back_end_development boss": {
         "name": "Miguel Torres",
-        "photo": "url_a_foto_jefe_back",
+        "photo": "../src/imagenes/logo-duacode-negro.svg",
+        "position": "Head of Back-End Development",
         "subordinates": {
           "back_end_manager": {
             "name": "Isabel Soto",
-            "photo": "url_a_foto_manager_back",
+            "photo": "../src/imagenes/logo-duacode-negro.svg",
+            "position": "Back-End Manager",
             "developers": [
               {
                 "name": "David Romero",
-                "photo": "url_a_foto_dev1_back"
+                "photo": "../src/imagenes/logo-duacode-negro.svg",
+                "position": "Back-End Developer"
               },
               {
                 "name": "Sara Jiménez",
-                "photo": "url_a_foto_dev2_back"
+                "photo": "../src/imagenes/logo-duacode-negro.svg",
+                "position": "Senior Back-End Developer"
               }
             ]
           }
         }
       },
-      "it_support": {
+      "it_support boss": {
         "name": "Juan Navarro",
-        "photo": "url_a_foto_jefe_it",
+        "photo": "../src/imagenes/logo-duacode-negro.svg",
+        "position": "Head of IT Support",
         "subordinates": {
           "it_support_manager": {
             "name": "Nerea Vázquez",
-            "photo": "url_a_foto_manager_it",
+            "photo": "../src/imagenes/logo-duacode-negro.svg",
+            "position": "IT Support Manager",
             "technicians": [
               {
                 "name": "Alberto Ruiz",
-                "photo": "url_a_foto_tec1_it"
+                "photo": "../src/imagenes/logo-duacode-negro.svg",
+                "position": "IT Technician"
               },
               {
                 "name": "Marta Gil",
-                "photo": "url_a_foto_tec2_it"
+                "photo": "../src/imagenes/logo-duacode-negro.svg",
+                "position": "Junior IT Technician"
               }
             ]
           }

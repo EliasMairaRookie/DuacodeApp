@@ -70,7 +70,7 @@ const ProyectosClientes = () => {
 
                                 <div>
                                     <p><strong>Titulo:</strong>{proyectosPasados.title}</p>
-                                    <p><strong>Objetivos:</strong> {proyectosPasados.objetives}</p>
+                                    <p><strong>Objetivos:</strong> {proyectosPasados.objectives}</p>
                                     <p>Ver más</p>
                                 </div>
                             )}
@@ -81,7 +81,7 @@ const ProyectosClientes = () => {
                             {proyectosActuales && (
                                 <div>
                                     <p><strong>Titulo:</strong>{proyectosActuales.title}</p>
-                                    <p><strong>Objetivos:</strong> {proyectosActuales.objetives}</p>
+                                    <p><strong>Objetivos:</strong> {proyectosActuales.objectives}</p>
                                 </div>
                             )}
 

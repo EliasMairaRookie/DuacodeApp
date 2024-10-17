@@ -19,15 +19,12 @@ function Ajustes() {
       <aside className="sidebar">
       <Link to="/" className='nav-url'><img src={logo} alt="Logo" className='logo'/></Link>
         <ul>
-          <li><Link to='/*'><strong>Cambiar de oficina</strong></Link></li>
-          <li><Link to='/*'>Cuenta de administrador</Link></li>
-          <li><Link to='/*'>etc</Link></li>
-          <li><Link to='/*'>etc</Link></li>
+          <li><strong>Cambiar de oficina</strong></li>
         </ul>
       </aside>
       
       <main className="main-content">
-        <h1>Cuenta de administardor
+        <h1>Cambiar de oficina
         </h1>
         <p>Selecciona de que oficina necesitas la información:</p>
 

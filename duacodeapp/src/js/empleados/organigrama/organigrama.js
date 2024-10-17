@@ -1,41 +1,60 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Tree, NodeModel, TreeNode } from 'react-organizational-chart'; 
+import { Tree, TreeNode } from 'react-organizational-chart';
 import Cabecera from '../../cabecera';
+import MenuEmpleados from '../menuEmpleados.js';
 
-// Función para crear un nodo del organigrama
-const createNode = (employee) => {
-  return (
-    <div style={{ textAlign: 'center' }}>
-      <img src={employee.photo} alt={employee.name} style={{ width: '60px',  }} />
-      <div>{employee.name}</div>
-    </div>
-  );
+// Componente para mostrar cada miembro del equipo
+const MemberCard = ({ member }) => (
+  <div style={{
+    textAlign: 'center',
+    padding: '2%',
+    border: '1px solid #ccc',
+    borderRadius: '8px',
+    backgroundColor: '#f9f9f9',
+    boxShadow: '0 2px 5px rgba(0, 0, 0, 0.2)',
+    transition: 'transform 0.2s',
+  }}>
+
+    <div style={{
+      fontWeight: 'bold',
+      fontSize: '16px',
+      color: '#007BFF',
+    }}>{member.name}</div>
+    <div style={{
+      fontStyle: 'italic',
+      fontSize: '14px',
+      color: '#555',
+    }}>{member.position}</div>
+  </div>
+);
+
+// Componente recursivo para construir el organigrama
+const renderEmployees = (employees) => {
+  return employees.map((employee, index) => (
+    <TreeNode key={index} label={<MemberCard member={employee} />} />
+  ));
 };
 
-// Función recursiva para construir el organigrama
-const buildTree = (departments) => {
-  return Object.keys(departments).map((key) => {
-    const department = departments[key];
-    const subordinates = department.subordinates || {};
-    return (
-      <TreeNode key={key} label={createNode(department)}>
-        {subordinates && buildTree(subordinates)}
-        {department.employees && department.employees.map((employee) => (
-          <TreeNode key={employee.name} label={createNode(employee)} />
-        ))}
-      </TreeNode>
-    );
-  });
+const renderSubordinates = (subordinates) => {
+  return Object.entries(subordinates).map(([key, subordinate]) => (
+    <TreeNode key={key} label={<MemberCard member={subordinate} />} >
+      {subordinate.subordinates && renderSubordinates(subordinate.subordinates)}
+      {subordinate.employees && renderEmployees(subordinate.employees)}
+      {subordinate.technicians && renderEmployees(subordinate.technicians)}
+      {subordinate.developers && renderEmployees(subordinate.developers)}
+    </TreeNode>
+  ));
 };
 
-const OrganizationChart = () => {
+const Organigrama = () => {
   const [data, setData] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('/organigramaData.json'); // Asegúrate de que la ruta sea correcta
+        const response = await axios.get('/organigramaData.json');
+        console.log(response.data)
         setData(response.data);
       } catch (error) {
         console.error('Error fetching the data', error);
@@ -46,19 +65,33 @@ const OrganizationChart = () => {
   }, []);
 
   if (!data) {
-    return <div>Cargando...</div>; 
+    return (
+      <div>
+        <div>Cargando...</div>
+      </div>
+    );
   }
+
+  const { general_director } = data;
 
   return (
     <div>
-        <Cabecera></Cabecera>
-    <Tree lineWidth={'2px'} lineColor={'#000'} lineHeight={'25px'}>
-      <TreeNode label={createNode(data.general_director)}>
-        {buildTree(data.general_director.departments)}
-      </TreeNode>
-    </Tree>
+      <Cabecera />
+      <MenuEmpleados />
+      <Tree
+        lineWidth={'2px'}
+        lineColor={'#000'}
+        lineBorderRadius={'10px'}
+        label={<MemberCard member={general_director} />}
+      >
+        {general_director.departments && Object.entries(general_director.departments).map(([key, department]) => (
+          <TreeNode key={key} label={<MemberCard member={department} />}>
+            {department.subordinates && renderSubordinates(department.subordinates)}
+          </TreeNode>
+        ))}
+      </Tree>
     </div>
   );
 };
 
-export default OrganizationChart;
+export default Organigrama;
