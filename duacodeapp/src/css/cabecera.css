@@ -9,7 +9,6 @@
   flex-direction: column;
   width: 100%;
   position: sticky;
-  top: 0;
   background-color: rgb(255, 255, 255);
   z-index: 1;
 }

@@ -1,0 +1,63 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .mapa {
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 20px;
+    justify-content: space-around;
+    width: 100%;
+    position: relative;
+  }
+  
+  .habitacion {
+    margin-top: 20px;
+    background-color: grey;
+    width: calc(25% - 20px); /* Ajusta el ancho para que quepan 4 habitaciones por fila con el gap */
+    height: 100px; /* Puedes ajustar la altura según tu diseño */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    margin-bottom: 10px;
+  }
+
+  .pasilloVertical{
+    background-color: blueviolet;
+    height: 51px;
+    width: 15%;
+    border: 1px solid black;
+    position: absolute;
+    top: 100%;
+    z-index: 1;
+    
+  }
+  .pasilloHorizontal{
+    height: 25px;
+    background-color: blue;
+    width: 75%;
+    border: 1px solid black;
+    position: absolute;
+    top: calc(55% - 20px);
+  }
+
+  .entrada{
+    background-color: blueviolet;
+    height: 600%;
+    width: 2%;
+    border: 1px solid black;
+    position: absolute;
+    top: 100%;
+    left: 49%;
+    z-index: 1;
+  }
+  
+
+  .room-buttons{
+    position: fixed;
+    bottom: 0;
+  }

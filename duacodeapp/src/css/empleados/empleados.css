@@ -1,62 +1,146 @@
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
- 
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  
 }
+
+
+
 
 .menuEmpleadospagina{
   display:flex;
   width:100%;
   justify-content: space-around;
+  margin-bottom: 20px;
   
-}
-.menuEmpleados-itempagina{
-  justify-content: center;  
+  }
+
+  .menuEmpleados-itempagina{
+    justify-content: center;  
+    align-items: center;
+    text-align: center;
+    width: 15%;
+    border-bottom: 2px solid grey;
+    font-size: 1.1rem;
+    
+    }
+
+/* Estilos para la barra de búsqueda */
+.containerInput {
+  display: flex;
+  justify-content: center;
   align-items: center;
-  text-align: center;
-  width: 15%;
-  border-bottom: 2px solid grey;
-  font-size: 1.1rem;
-  
-}
-.menuEmpleados-itempagina:hover{
-  font-weight: bold;
+  margin: 20px 0;
 }
 
-.inputBuscar{
+.inputBuscar {
   display: flex;
   width: 40% !important;
-  height: 25px;
+  height: 35px;
   align-items: center;
   justify-content: center;
-
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  outline: none;
+  transition: border 0.3s ease-in-out;
+  text-align: center;
+  
 }
-.containerInput{
-    display: flex;
-    justify-content: center;
-    padding-bottom: 25px;
-    margin-top: 30px;
+
+
+.menuEmpleados-itempagina:hover{
+  font-weight: bold;
   }
 
-  .no-results{
-    width: 100%;
-    text-align: center;
-    margin-top: 30px;
-    font-size: 1.5rem;
-  }
+.inputBuscar:focus {
+  border-color: #DF1882;
+}
 
-@media (max-width: 988px){
-  
-    .inputBuscar{
-      width: 100% !important;
-    }
-  
-    
-  .containerInput{
-    padding-bottom: 15px;
-  }
-  
-  }
+/* Estilos para el botón de búsqueda */
+.btn-succes {
+  background-color: #DF1882;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  margin-left: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out, transform 0.2s ease;
+}
 
-  
+.btn-succes:hover {
+  background-color: #c1156e;
+  transform: scale(1.05);
+}
+
+.btn-succes:active {
+  transform: scale(0.98);
+}
+
+/* Estilos para cuando no hay resultados */
+.no-results {
+  width: 100%;
+  font-size: 1.5rem;
+  text-align: center;
+  font-size: 18px;
+  color: #777;
+  margin-top: 20px;
+}
+
+
+/* Estilo para el contenedor de las tarjetas de empleados */
+.empleadosDisplay {
+  display: flex;
+  flex-wrap: wrap; /* Para que los elementos se ajusten automáticamente en varias filas si es necesario */
+  gap: 20px; /* Espacio entre las tarjetas */
+  justify-content: center; /* Centra las tarjetas horizontalmente */
+  padding: 20px;
+  width: 100%;
+}
+
+/* Estilo para cada tarjeta de empleado */
+.empleadosCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 250px; /* Ancho fijo para las tarjetas */
+  background-color: #ffffff;
+  border: 2px solid #DF1882;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  overflow: hidden; /* Oculta cualquier contenido que desborde */
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.empleadosCard img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.empleadosCard h2, .empleadosCard p {
+  margin: 5px 0;
+  font-size: 1rem;
+  color: #333;
+  text-align: center;
+  text-overflow: ellipsis; /* Para manejar textos largos */
+  overflow: hidden; /* Oculta lo que desborde del contenedor */
+  white-space: nowrap; /* Evita el salto de línea */
+}
+
+.empleadosCard p strong {
+  color: #DF1882;
+}
+
+/* Efecto al pasar el ratón sobre la tarjeta */
+.empleadosCard:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+

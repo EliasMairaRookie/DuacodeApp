@@ -19,7 +19,7 @@ const MemberCard = ({ member }) => (
     <div style={{
       fontWeight: 'bold',
       fontSize: '16px',
-      color: '#007BFF',
+      color: '#DF1882',
     }}>{member.name}</div>
     <div style={{
       fontStyle: 'italic',
@@ -54,7 +54,6 @@ const Organigrama = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get('/organigramaData.json');
-        console.log(response.data)
         setData(response.data);
       } catch (error) {
         console.error('Error fetching the data', error);
@@ -78,18 +77,24 @@ const Organigrama = () => {
     <div>
       <Cabecera />
       <MenuEmpleados />
-      <Tree
-        lineWidth={'2px'}
-        lineColor={'#000'}
-        lineBorderRadius={'10px'}
-        label={<MemberCard member={general_director} />}
-      >
-        {general_director.departments && Object.entries(general_director.departments).map(([key, department]) => (
-          <TreeNode key={key} label={<MemberCard member={department} />}>
-            {department.subordinates && renderSubordinates(department.subordinates)}
-          </TreeNode>
-        ))}
-      </Tree>
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+        <Tree
+          lineWidth={'2px'}
+          lineColor={'#000'}
+          lineBorderRadius={'10px'}
+          label={
+            <div style={{ width: '25%', margin: '0 auto' }}>
+              <MemberCard member={general_director} />
+            </div>
+          }
+        >
+          {general_director.departments && Object.entries(general_director.departments).map(([key, department]) => (
+            <TreeNode key={key} label={<MemberCard member={department} />}>
+              {department.subordinates && renderSubordinates(department.subordinates)}
+            </TreeNode>
+          ))}
+        </Tree>
+      </div>
     </div>
   );
 };

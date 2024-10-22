@@ -11,6 +11,8 @@ import '../../css/empleados/empleados.css';
 
 
 
+
+
 const Empleados = () => {
   const [dataEmployeeFiltrada, setDataEmployeeFiltrada]=useState([]);
   const [dataEmployee, setDataEmployee] = useState([]);
@@ -82,10 +84,10 @@ const Empleados = () => {
           No hay resultados para esa búsqueda.
         </div>
       )}
-
+      <div className="empleadosDisplay">
       {dataEmployee.map((employee) => (
         <Link to={`/empleados/${employee.employee_id}`} key={employee.employee_id}>
-          <div>
+          <div className="empleadosCard">
             <img src={employee.picture} alt={employee.name} />
             <h2>{employee.name}</h2>
             <p><strong>Id:</strong> {employee.employee_id}</p>
@@ -96,6 +98,7 @@ const Empleados = () => {
           </div>
         </Link>
       ))}
+      </div>
     </div>
   );
 };
