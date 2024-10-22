@@ -2,35 +2,29 @@ import '../css/cabecera.css';
 import logo from '../imagenes/logo-duacode-negro.svg';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
-import React, { useState ,useEffect,useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-
-
+import { MagicMotion } from 'react-magic-motion';
 
 const Cabecera = () => {
   const [isSubmenuOpen, setIsSubmenuOpen] = useState(false);
-  let menuRef =useRef();
+  let menuRef = useRef();
 
-  useEffect(()=>{
-    
-    let handler =(e)=>{
-      if(!menuRef.current.contains(e.target)){
+  useEffect(() => {
+    let handler = (e) => {
+      if (!menuRef.current.contains(e.target)) {
         setIsSubmenuOpen(false);
       }
-      
     };
-      
-    document.addEventListener("mousedown",handler);
 
-    return()=>{
-      document.removeEventListener("mousedown",handler);
-    }
-  });
+    document.addEventListener("mousedown", handler);
 
-
+    return () => {
+      document.removeEventListener("mousedown", handler);
+    };
+  }, []);
 
   return (
-    
     <header className="header">
       <div className="header-top">
         <div className="div-logo">
@@ -49,24 +43,30 @@ const Cabecera = () => {
         <div className="menu-item">
           <Link to="/empleados" className='nav-url'>Empleados</Link>
         </div>
+
         {/* Empresa con submenú */}
-        <div className={`menu-item-empresa ${isSubmenuOpen ? 'bold' : ''}`} onClick={()=>{setIsSubmenuOpen(!isSubmenuOpen)}} ref={menuRef} >
+        <div className={`menu-item-empresa ${isSubmenuOpen ? 'bold' : ''}`} onClick={() => setIsSubmenuOpen(!isSubmenuOpen)} ref={menuRef}>
           <span>Empresa</span>
-          <div className={`submenu ${isSubmenuOpen ? 'active' : ''}`} >
-          <div className="submenu-item">
-              <Link to='/empresa/informacionEmpresa' className='nav-url'>informacionEmpresa</Link>
+          
+          {/* Animación con MagicMotion para el submenú */}
+          <MagicMotion in={isSubmenuOpen} transition={{ type: "tween", stiffness: 180, damping: 20, mass: 1.1  }}>
+            <div className={`submenu ${isSubmenuOpen ? 'active' : ''}`}>
+              <div className="submenu-item">
+                <Link to='/empresa/informacionEmpresa' className='nav-url'>Información Empresa</Link>
+              </div>
+              <div className="submenu-item">
+                <Link to='/empresa/eventos' className='nav-url'>Eventos</Link>
+              </div>
+              <div className="submenu-item">
+                <Link to='/empresa/noticiasComunicados' className='nav-url'>Noticias y Comunicados</Link>
+              </div>
+              <div className="submenu-item">
+                <Link to='/empresa/proyectosClientes' className='nav-url'>Proyectos y Clientes</Link>
+              </div>
             </div>
-            <div className="submenu-item">
-              <Link to='/empresa/eventos' className='nav-url'>Eventos</Link>
-            </div>
-            <div className="submenu-item">
-              <Link to='/empresa/noticiasComunicados' className='nav-url'>Noticias y comunicados</Link>
-            </div>
-            <div className="submenu-item">
-              <Link to='/empresa/proyectosClientes' className='nav-url'>Proyectos y clientes</Link>
-            </div>
-          </div>
+          </MagicMotion>
         </div>
+
         <div className="menu-item">
           <Link to="/distribucionInfo" className='nav-url'>Distribución de salas e Info</Link>
         </div>

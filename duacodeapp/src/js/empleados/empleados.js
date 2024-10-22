@@ -4,9 +4,10 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
-import { useParams } from "react-router-dom";
+
 import MenuEmpleados from './menuEmpleados';
 import '../../css/empleados/empleados.css';
+import { MagicMotion } from "react-magic-motion";
 
 
 
@@ -84,6 +85,7 @@ const Empleados = () => {
           No hay resultados para esa búsqueda.
         </div>
       )}
+      <MagicMotion>
       <div className="empleadosDisplay">
       {dataEmployee.map((employee) => (
         <Link to={`/empleados/${employee.employee_id}`} key={employee.employee_id}>
@@ -99,6 +101,7 @@ const Empleados = () => {
         </Link>
       ))}
       </div>
+      </MagicMotion>
     </div>
   );
 };

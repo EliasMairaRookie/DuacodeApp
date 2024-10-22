@@ -23,7 +23,7 @@
 
 a .icono {
   text-decoration: none;
-  color: black;
+  color: #333;
   font-size: 30px;
 }
 
@@ -55,14 +55,13 @@ a .icono {
   text-align: center;
   align-items: center;
   justify-content: center;
+  transition: color 0.3s ease;
 }
 
-
-.menu-item:hover .nav-url {
+.nav-url:hover {
+  color: #DF1882;
   font-weight: bold;
 }
-
-
 
 .menu-item-empresa {
   flex: 1;
@@ -74,31 +73,38 @@ a .icono {
   position: relative;
 }
 
-
+/* Submenú con colores más vibrantes */
 .submenu {
   display: none;
-  /* Oculto por defecto */
   position: absolute;
   top: 100%;
-  background-color: #684e54;
-  
-
+  background-color: #ff6565;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: all 0.3s ease-in-out;
 }
 
 .submenu-item {
-  border-top: 1px solid black;
+  padding: 15px 20px;
 }
 
-/* Hover en submenú */
+.submenu-item .nav-url {
+  color: #FFF;
+  font-size: 1rem;
+}
+
 .submenu-item:hover .nav-url {
   font-weight: bold;
+  color: #F1F1F1;
 }
-
 
 /* Submenú activo cuando se hace clic en "Empresa" */
 .submenu.active {
   display: block;
-  z-index: 1;
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .menu-item-empresa.active {
@@ -109,12 +115,9 @@ a .icono {
   font-weight: bold;
 }
 
-
 /* Responsive: para pantallas pequeñas */
 @media (max-width: 768px) {
   .nav-menu {
     flex-direction: column;
   }
-
-
 }
