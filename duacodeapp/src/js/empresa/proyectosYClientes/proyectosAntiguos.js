@@ -12,7 +12,7 @@ const ProyectosAntiguos = () => {
     const [hasError, setHasError] = useState(false);
 
     const peticion_proyectosAntiguos = async () => {
-        await axios.get('http://127.0.0.1:8000/project/')
+        await axios.get('https://4hf-assiduous-rutherford.circumeo-apps.net/project/')
             .then(response => {
                 console.log(response.data);
                 setDataProyectosAntiguos(response.data);
@@ -32,7 +32,7 @@ const ProyectosAntiguos = () => {
     if (hasError) {
         return (
             <div>
-                <Cabecera />
+                <Cabecera activePage="empresa" />
                 <p>Puede que el servidor esté apagado o exista algún problema con el</p>
             </div>
         );
@@ -43,7 +43,7 @@ const ProyectosAntiguos = () => {
 
     return (
         <div className="informacionEmpleados">
-            <Cabecera></Cabecera>
+            <Cabecera activePage="empresa" />
 
             <div>
                 {proyectosAntiguosFiltrados.map((proyectosAntiguos) => (

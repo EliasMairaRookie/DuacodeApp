@@ -13,7 +13,7 @@ const ProyectosActuales = () => {
     const [hasError, setHasError] = useState(false);
 
     const peticion_proyectosActuales = async () => {
-        await axios.get('http://127.0.0.1:8000/project/')
+        await axios.get('https://4hf-assiduous-rutherford.circumeo-apps.net/project/')
             .then(response => {
                 console.log(response.data);
                 setDataProyectosActuales(response.data);
@@ -33,7 +33,7 @@ const ProyectosActuales = () => {
     if (hasError) {
         return (
             <div>
-                <Cabecera />
+                <Cabecera activePage="empresa" />
                 <p>Puede que el servidor esté apagado o exista algún problema con el</p>
             </div>
         );
@@ -46,7 +46,7 @@ const ProyectosActuales = () => {
 
     return (
         <div className="informacionEmpleados">
-            <Cabecera></Cabecera>
+            <Cabecera activePage="empresa" />
 
             <div>
                 {proyectosActualesFiltrados.map((proyectosActuales) => (

@@ -75,7 +75,7 @@ const Organigrama = () => {
 
   return (
     <div>
-      <Cabecera />
+      <Cabecera activePage="empleados" />
       <MenuEmpleados />
       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
         <Tree

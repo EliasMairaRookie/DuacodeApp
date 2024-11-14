@@ -3,7 +3,7 @@ import Cabecera from './cabecera';
 const Inicio=()=> {
     return (
         <div className='Inicio'>
-            <Cabecera></Cabecera>
+            <Cabecera activePage="inicio" />
             <p>Busqueda rapida</p>
         </div>
     );

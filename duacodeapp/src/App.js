@@ -1,4 +1,3 @@
-import './App.css';
 import Inicio from './js/Inicio.js'
 import NotFound from './js/NotFound';
 import Ajustes from './js/ajustes.js';
@@ -18,6 +17,7 @@ import ProyectosAntiguos from './js/empresa/proyectosYClientes/proyectosAntiguos
 import ProyectosActuales from './js/empresa/proyectosYClientes/proyectosActuales.js';
 import OrganizationChart from './js/empleados/organigrama/organigrama.js';
 import { OfficeProvider } from './js/OfficeContext';
+import NoticiasEspecificas from './js/empresa/noticiasYComunicados/noticiasEspecificas.js';
 
 
 function App() {
@@ -48,6 +48,10 @@ function App() {
             <Route path="/calendario" element={< Calendario />} />
             <Route path="/protocolos" element={< Protocolos />} />
             <Route path="/empleados/:X" element={<EmpleadoEspecifico />} />
+
+            <Route path="/empresa/noticiasComunicados/comunicados/news/:newsId" element={<NoticiasEspecificas />} />
+            
+
             <Route path="/*" element={<NotFound />} /> {/* Ruta para 404 */}
           </Routes>
         </BrowserRouter>

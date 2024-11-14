@@ -6,7 +6,7 @@
     
     
 }
-.menu-infoImportante{
+.menu-infoImportanteClientes{
     margin-top: 40px;
     display: flex;
     width: 100%;
@@ -15,7 +15,14 @@
     
 }
 
-
+.proyectos{
+    background-color: #FFF;
+    border: 2px solid #DF1882;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
 
 .ordenar{
     width: 30%;
@@ -23,15 +30,58 @@
 
 }
 /* main content ajustes.css */
-.informacion-lateralMenu {
-    width: 60%;
+.informacion-lateralMenuClientes {
+    width: 100%;
     display: flex;
+    justify-content: space-evenly;
 }
 
 .colocarInfoLateral{
     text-align: center;
 }
 
-.informacionExtra{
+
+
+.imgClientes{
+    width: 100%;
+    height: auto;
+    max-height: 120px;
+    object-fit: cover;
+   
+}
+.colocar{
+    display: flex;
     margin-top: 70px;
+    width: 100%;
+    margin-bottom: 20px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.informacionExtraClientes{
+    display: flex;
+    margin-top: 70px;
+    width: 100%;
+    margin-bottom: 20px;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: row;
+}
+
+/* Styling for individual items in notigen/comunicadosgen */
+.tarjetaCliente {
+    background-color: #FFF;
+    border: 2px solid #DF1882;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Hover effect */
+.tarjetaCliente:hover,.proyectos:hover {
+    cursor: pointer;
+    background-color: #FBE4F0;
+    
 }

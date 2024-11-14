@@ -10,7 +10,7 @@ const Eventos = () => {
 
     const peticion_eventos = async () => {
         try {
-            const response = await axios.get('http://127.0.0.1:8000/event/');
+            const response = await axios.get('https://4hf-assiduous-rutherford.circumeo-apps.net/event/');
             console.log("Datos de eventos:", response.data);
             setDataEventos(response.data);
             setHasError(false);
@@ -27,7 +27,7 @@ const Eventos = () => {
     if (hasError) {
         return (
             <div>
-                <Cabecera />
+                <Cabecera activePage="empresa" />
                 <p>Puede que el servidor esté apagado o exista algún problema con el</p>
             </div>
         );
@@ -50,14 +50,14 @@ const Eventos = () => {
 
     return (
         <div className="informacionEmpleados">
-            <Cabecera />
+            <Cabecera activePage="empresa" />
             <div className="menu-infoImportante">
                 <div className='ordenar'>
-                    <MenuEmpresa />
+                    <MenuEmpresa EmpresaMenuActivo="eventos" />
                 </div>
                 <div className="informacion-lateralMenu">
                     {eventoMasCercano ? (
-                        <div>
+                        <div className="proxEvento">
                             <h2>Próximo evento</h2>
                             <p>{eventoMasCercano.title}</p>
                             <p>{new Date(eventoMasCercano.date_start).toLocaleString()}</p>
@@ -69,10 +69,12 @@ const Eventos = () => {
                 </div>
             </div>
             <div className="informacionExtra">
-                <h2>Próximos eventos</h2>
+                <div className="titulo">
+                    <h2>Próximos eventos</h2>
+                </div>
                 {eventosRestantes.length > 0 ? (
                     eventosRestantes.map((evento, index) => (
-                        <div key={index}>
+                        <div key={index} className="eventoFuturo">
                             <p>{evento.title}</p>
                             <p>{new Date(evento.date_start).toLocaleString()}</p>
                             <p>{evento.content}</p>

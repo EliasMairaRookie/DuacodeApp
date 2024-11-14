@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Cabecera from '../cabecera';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFilePdf } from '@fortawesome/free-solid-svg-icons';
 import { pdfjs } from 'react-pdf';
 import PdfComp from './pdfComp';
 import 'react-pdf/dist/Page/AnnotationLayer.css';
+import '../../css/protocolos.css';
 
 pdfjs.GlobalWorkerOptions.workerSrc = new URL(
     'pdfjs-dist/build/pdf.worker.min.mjs',
@@ -17,8 +20,7 @@ const Protocolos = () => {
 
     const peticion_protocolos = async () => {
         try {
-            const response = await axios.get('http://127.0.0.1:8000/protocol/');
-            console.log(response.data);
+            const response = await axios.get('https://4hf-assiduous-rutherford.circumeo-apps.net/protocol/');
             setPdfFiles(response.data);
             setHasError(false);
         } catch (error) {
@@ -34,7 +36,7 @@ const Protocolos = () => {
     if (hasError) {
         return (
             <div>
-                <Cabecera />
+                <Cabecera activePage="protocolos" />
                 <p>Puede que el servidor esté apagado o exista algún problema con el servidor</p>
             </div>
         );
@@ -42,22 +44,29 @@ const Protocolos = () => {
 
     return (
         <div className='Protocolos'>
-            <Cabecera />
-            <div>
-                {pdfFiles.map(pdf => (
-                    <div key={pdf.protocol_id}>
-                        <h3>{pdf.title}</h3>
-                        <button onClick={() => setSelectedPdf(pdf.protocol_id)}>
-                            Mostrar
-                        </button>
-                    </div>
-                ))}
-            </div>
-            {selectedPdf && (
-                <div>
-                    <PdfComp id={selectedPdf} />
+            <Cabecera activePage="protocolos" />
+            <div className='encuadre'>
+                {/* Contenedor de botones y títulos de PDF */}
+                <div className='pdfDisplay'>
+                    {pdfFiles.map(pdf => (
+                        <div key={pdf.protocol_id} className='individualPdf'>
+                            <h3>
+                                <FontAwesomeIcon icon={faFilePdf} /> {pdf.title}
+                            </h3>
+                            <button className='botonMostrar' onClick={() => setSelectedPdf(pdf.protocol_id)}>
+                                Mostrar
+                            </button>
+                        </div>
+                    ))}
                 </div>
-            )}
+
+                {/* Contenedor de visualización del PDF */}
+                {selectedPdf && (
+                    <div className='pdf'>
+                        <PdfComp id={selectedPdf} />
+                    </div>
+                )}
+            </div>
         </div>
     );
 };

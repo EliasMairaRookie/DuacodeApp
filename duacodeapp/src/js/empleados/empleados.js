@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
-
 import MenuEmpleados from './menuEmpleados';
 import '../../css/empleados/empleados.css';
 import { MagicMotion } from "react-magic-motion";
@@ -22,7 +21,7 @@ const Empleados = () => {
   
 
   const peticion_empleados = async () => {
-    await axios.get('http://127.0.0.1:8000/employee/')
+    await axios.get('https://4hf-assiduous-rutherford.circumeo-apps.net/employee/')
       .then(response => {
         console.log(response.data);
         setDataEmployeeFiltrada(response.data);
@@ -49,7 +48,7 @@ const Empleados = () => {
   if (hasError) {
     return (
       <div>
-        <Cabecera />
+        <Cabecera activePage="empleados" />
         <p>Puede que el servidor esté apagado o exista algún problema con el</p>
       </div>
     );
@@ -66,7 +65,7 @@ const Empleados = () => {
 
   return (
     <div>
-      <Cabecera />
+      <Cabecera activePage="empleados" />
       <MenuEmpleados />
       <div className="containerInput">
         <input
@@ -97,6 +96,7 @@ const Empleados = () => {
             <p><strong>Phone:</strong> {employee.phone}</p>
             <p><strong>Job Title:</strong> {employee.job_title}</p>
             <p><strong>Status:</strong> {employee.status}</p>
+            
           </div>
         </Link>
       ))}

@@ -6,7 +6,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { MagicMotion } from 'react-magic-motion';
 
-const Cabecera = () => {
+const Cabecera = ({ activePage }) => {
   const [isSubmenuOpen, setIsSubmenuOpen] = useState(false);
   let menuRef = useRef();
 
@@ -33,23 +33,21 @@ const Cabecera = () => {
           </Link>
         </div>
         <div className="icon">
-          <a href="/ajustes" className='nav-url'>
+          <Link to="/ajustes" className='nav-url'>
             <FontAwesomeIcon icon={faBars} className='icono' />
-          </a>
+          </Link>
         </div>
       </div>
 
       <nav className="nav-menu">
-        <div className="menu-item">
+        <div className={`menu-item ${activePage === 'empleados' ? 'bold' : ''}`}>
           <Link to="/empleados" className='nav-url'>Empleados</Link>
         </div>
 
-        {/* Empresa con submenú */}
-        <div className={`menu-item-empresa ${isSubmenuOpen ? 'bold' : ''}`} onClick={() => setIsSubmenuOpen(!isSubmenuOpen)} ref={menuRef}>
+        <div className={`menu-item-empresa ${activePage.startsWith('empresa') || isSubmenuOpen ? 'bold' : ''}`} 
+             onClick={() => setIsSubmenuOpen(!isSubmenuOpen)} ref={menuRef}>
           <span>Empresa</span>
-          
-          {/* Animación con MagicMotion para el submenú */}
-          <MagicMotion in={isSubmenuOpen} transition={{ type: "tween", stiffness: 180, damping: 20, mass: 1.1  }}>
+          <MagicMotion in={isSubmenuOpen} transition={{ type: "tween", stiffness: 180, damping: 20, mass: 1.1 }}>
             <div className={`submenu ${isSubmenuOpen ? 'active' : ''}`}>
               <div className="submenu-item">
                 <Link to='/empresa/informacionEmpresa' className='nav-url'>Información Empresa</Link>
@@ -67,13 +65,13 @@ const Cabecera = () => {
           </MagicMotion>
         </div>
 
-        <div className="menu-item">
+        <div className={`menu-item ${activePage === 'distribucionInfo' ? 'bold' : ''}`}>
           <Link to="/distribucionInfo" className='nav-url'>Distribución de salas e Info</Link>
         </div>
-        <div className="menu-item">
+        <div className={`menu-item ${activePage === 'calendario' ? 'bold' : ''}`}>
           <Link to="/calendario" className='nav-url'>Calendario</Link>
         </div>
-        <div className="menu-item">
+        <div className={`menu-item ${activePage === 'protocolos' ? 'bold' : ''}`}>
           <Link to="/protocolos" className='nav-url'>Protocolos</Link>
         </div>
       </nav>

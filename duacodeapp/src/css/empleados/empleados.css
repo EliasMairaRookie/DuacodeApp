@@ -115,6 +115,7 @@
   overflow: hidden; /* Oculta cualquier contenido que desborde */
   text-overflow: ellipsis;
   white-space: nowrap;
+  transition: background-color 0.3s ease;
 }
 
 .empleadosCard img {

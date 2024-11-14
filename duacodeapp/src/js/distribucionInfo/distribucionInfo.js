@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import '../../css/distribucionInfoPrueba.css';
+import '../../css/distribucionInfo.css';
 import Cabecera from "../cabecera.js";
 import { useOffice } from '../OfficeContext';
 
 const DistribucionInfo = () => {
     const [rooms, setRooms] = useState([]);
     const [selectedRoomId, setSelectedRoomId] = useState(null);
-    const { selectedOffice } = useOffice(); // No uses useContext directamente, usa el hook personalizado
+    const { selectedOffice } = useOffice();
 
     // Fetch room data from backend
     const peticion_habitaciones = async () => {
         try {
-            const response = await axios.get('http://localhost:8000/room/');
-            console.log(response.data)
+            const response = await axios.get('https://4hf-assiduous-rutherford.circumeo-apps.net/room/');
+            console.log(response.data);
             setRooms(response.data);
         } catch (error) {
             console.error('Error fetching rooms:', error);
@@ -24,8 +24,15 @@ const DistribucionInfo = () => {
         peticion_habitaciones();
     }, []);
 
-    // Filter rooms based on selected office
-    const filteredRooms = rooms.filter(room => room.office === selectedOffice);
+    // Filtrar habitaciones según la oficina seleccionada
+    const filteredRooms = rooms.filter(room => {
+        if (selectedOffice === 'Galicia') {
+            return room.office === 'Gl';
+        } else if (selectedOffice === 'Valencia') {
+            return room.office === 'Va';
+        }
+        return false;
+    });
 
     // Handle button click to highlight the room
     const handleRoomSelect = (roomId) => {
@@ -33,45 +40,68 @@ const DistribucionInfo = () => {
     };
 
     return (
-        <div>
-            <Cabecera />
-            {/*Meterlo con position relative absolute etc los pasillos usar display flex 25% */}
-            <div className='mapa'>
+        <>
+            <Cabecera activePage="distribucionInfo" />
 
+            {/* Mapa de Galicia */}
+            {selectedOffice === 'Galicia' && (
+                <div className="mapa">
+                    <div className='pasilloHorizontal'>
+                        <div className='entrada'></div>
+                    </div>
 
-                <div className='pasilloHorizontal'>
-                    <div className='entrada'></div>
+                    {filteredRooms.map(room => (
+                        <div
+                            key={room.room_id}
+                            className={`habitacion ${selectedRoomId === room.room_id ? 'highlighted' : ''}`}
+                            onClick={() => handleRoomSelect(room.room_id)}
+                        >
+                            {room.name}
+                            {/* Condición para mostrar el pasillo vertical solo en ciertos IDs */}
+                            {(room.room_id < 5) && (
+                                <div className='pasilloVertical'></div>
+                            )}
+                        </div>
+                    ))}
                 </div>
-                <div className='habitacion'>Sala 1
-                    <div className='pasilloVertical'></div>
+            )}
 
+            {/* Mapa de Valencia */}
+            {selectedOffice === 'Valencia' && (
+                <div className="mapa">
+                    <div className='pasilloHorizontal'>
+                        <div className='entrada'></div>
+                    </div>
+                    {/* Diseña el mapa de Valencia aquí */}
+                    {filteredRooms.map(room => (
+                        <div
+                            key={room.room_id}
+                            className={`habitacion ${selectedRoomId === room.room_id ? 'highlighted' : ''}`}
+                            onClick={() => handleRoomSelect(room.room_id)}
+                        >
+                            {room.name}
+                            {((room.room_id > 8 && room.room_id < 13)) && (
+                                <div className='pasilloVertical'></div>
+                            )}
+                        </div>
+                    ))}
                 </div>
-                <div className='habitacion'>Sala 2
-                    <div className='pasilloVertical'></div>
-                </div>
-                <div className='habitacion'>Sala 3
-                    <div className='pasilloVertical'></div>
-                </div>
-                <div className='habitacion'>Sala 4
-                    <div className='pasilloVertical'></div>
-                </div>
-                <div className='habitacion'>Sala 5</div>
-                <div className='habitacion'>Sala 6</div>
-                <div className='habitacion'>Sala 7</div>
-                <div className='habitacion'>Sala 8</div>
-            </div>
+            )}
+
             {/* Botones para seleccionar cada sala */}
-            <div className="room-buttons">
-                {filteredRooms.map((room) => (
-                    <button
-                        key={`button-${room.room_id}`}
-                        onClick={() => handleRoomSelect(room.room_id)}
-                    >
-                        {room.name}
-                    </button>
-                ))}
+            <div className='colocarBotones'>
+                <div className="room-buttons">
+                    {filteredRooms.map((room) => (
+                        <button
+                            key={`button-${room.room_id}`}
+                            onClick={() => handleRoomSelect(room.room_id)}
+                        >
+                            {room.name}
+                        </button>
+                    ))}
+                </div>
             </div>
-        </div>
+        </>
     );
 };
 

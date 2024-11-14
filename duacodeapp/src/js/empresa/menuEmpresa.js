@@ -1,29 +1,28 @@
-
 import { Link } from "react-router-dom";
 import '../../css/empresa/menuEmpresa.css';
 
-const menuEmpresa = () => {
+const menuEmpresa = ({EmpresaMenuActivo}) => {
 
     return (
         <div className="cabecera-menuEmpresa">
             <aside className="menuEmpresa">
                 <ul>
-                <li><Link to="/empresa/informacionEmpresa">
+                <li className={`menu-item ${EmpresaMenuActivo === 'infoEmpresa' ? 'bold' : ''}`}><Link to="/empresa/informacionEmpresa">
                     Informacion sobre nosotros
                 </Link>
                 </li>
 
-                <li><Link to="/empresa/eventos">
+                <li className={`menu-item ${EmpresaMenuActivo === 'eventos' ? 'bold' : ''}`}><Link to="/empresa/eventos">
                     Eventos
                 </Link>
                 </li>
 
-                <li><Link to="/empresa/noticiasComunicados">
+                <li className={`menu-item ${EmpresaMenuActivo === 'noticiasComunicados' ? 'bold' : ''}`}><Link to="/empresa/noticiasComunicados">
                     Noticias y Comunicados
                 </Link>
                 </li>
 
-                <li><Link to="/empresa/proyectosClientes">
+                <li className={`menu-item ${EmpresaMenuActivo === 'proyectosClientes' ? 'bold' : ''}`}><Link to="/empresa/proyectosClientes">
                     Proyectos y cliente
                 </Link>
                 </li>

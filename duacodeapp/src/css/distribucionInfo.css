@@ -1,55 +1,130 @@
-* {
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-  }
-  
-.room-map {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr); /* Adjust the number of columns as needed */
-    gap: 10px;
-    background-color: #f0f0f0;
-    padding: 20px;
-    border: 1px solid #ddd;
-}
+    * {
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+    }
 
-.room {
-    background-color: #aaa;
-    color: #fff;
-    padding: 20px;
-    text-align: center;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-}
+    .mapa {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: space-around;
+        width: 100%;
+        position: relative;
+        border: 2px solid #ddd;
+        background-color: #f7f7f7;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        animation: fadeIn 0.5s ease-in-out;
+    }
 
-.highlighted {
-    background-color: red;
-    transition: background-color 0.3s;
-}
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
 
-.room-buttons {
-    margin-top: 20px;
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-}
+    .habitacion {
+        margin-top: 20px;
+        background-color: #aaa;
+        width: calc(25% - 20px); /* Ajusta el ancho para 4 habitaciones por fila con el gap */
+        height: 100px;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        position: relative;
+        margin-bottom: 10px;
+        border-radius: 8px;
+        transition: background-color 0.3s, transform 0.3s;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+    }
 
-button {
-    background-color: #ddd;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
+    .habitacion:hover {
+        background-color: #DF1882;
+        transform:scale3d();
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
 
-button:hover {
-    background-color: #ccc;
-}
+    .pasilloVertical {
+        background-color: #DF1882;
+        height: 50px;
+        width: 15%;
+        border-radius: 4px;
+        position: absolute;
+        top: 100%;
+        left: calc(50% - 7.5%);
+        
+    }
 
-/* pasillos */
-.pasilloVertical{
-    width: 100%;
-    background-color: grey;
-}
+    .pasilloHorizontal {
+        height: 25px;
+        background-color: #DF1882;
+        width: 75%;
+        border-radius: 4px;
+        position: absolute;
+        top: calc(55% - 20px);
+    }
 
+    .entrada{
+        background-color: #DF1882;
+        height: 550%;
+        width: 1.15%;
+        border-radius: 4px;
+        position: absolute;
+        top: 100%;
+        left: 49.4%;
+        
+    }
+
+
+
+    .highlighted {
+        background-color: #DF1882;
+        color: #fff;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        transform: scale(1.02);
+        transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    }
+
+    .colocarBotones{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    .room-buttons {
+        margin-top: 75px;
+        width: 40%;
+        align-items: center;
+        justify-content: space-around;
+        display: flex;
+       
+        flex-wrap: wrap;
+    }
+
+    button {
+        background-color: #ddd;
+        color: #333;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s, transform 0.3s;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    button:hover {
+        background-color: #DF1882;
+        color: #fff;
+        transform: translateY(-3px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    }

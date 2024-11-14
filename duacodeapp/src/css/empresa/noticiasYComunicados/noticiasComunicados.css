@@ -1,43 +1,57 @@
+/* Global Styles */
 * {
     box-sizing: border-box;
     padding: 0;
     margin: 0;
-    
-    
-    
 }
-.menu-infoImportante{
+
+/* Container for the main content */
+.menu-infoImportante {
     margin-top: 40px;
     display: flex;
     width: 100%;
-    justify-content:space-around ;
+    justify-content: space-around;
     align-items: center;
+}
+
+/* Styling for the lateral information display */
+.informacion-lateralMenuNotiCom {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+/* Styling for individual items in notigen/comunicadosgen */
+.notigen, .comunicadosgen {
+    background-color: #FFF;
+    border: 2px solid #DF1882;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Hover effect */
+.notigen:hover, .comunicadosgen:hover {
+    background-color: #FBE4F0;
     
 }
 
-
-
-.ordenar{
-    width: 30%;
-    color: red;
-
-}
-/* main content ajustes.css */
-.informacion-lateralMenu {
-    width: 60%;
-    display: flex;
-}
-
-.colocarInfoLateral{
-    text-align: center;
-}
-
-.informacionExtra{
-    margin-top: 70px;
-}
-
-/* Imagenes de las noticias */
-.imgNoticiasComunicados{
+/* Image styling */
+.imgNoticiasComunicados {
     max-width: 200px;
-    max-height: auto;
+    max-height: 200px;
+    margin-top: 15px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .menu-infoImportante {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .notigen, .comunicadosgen {
+        width: 90%;
+        margin-bottom: 20px;
+    }
 }

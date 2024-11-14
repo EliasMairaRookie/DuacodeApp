@@ -7,7 +7,6 @@
     
 }
 .menu-infoImportante{
-    margin-top: 40px;
     display: flex;
     width: 100%;
     justify-content:space-around ;
@@ -17,11 +16,7 @@
 
 
 
-.ordenar{
-    width: 30%;
-    color: red;
 
-}
 /* main content ajustes.css */
 .informacion-lateralMenu {
     width: 60%;
@@ -33,5 +28,8 @@
 }
 
 .informacionExtra{
-    margin-top: 70px;
+    width: 100%;
+    padding: 0% 10%;
+    text-align: center;
+    
 }

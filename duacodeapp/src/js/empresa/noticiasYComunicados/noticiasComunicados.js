@@ -5,16 +5,13 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-
-
 const NoticiasComunicados = () => {
-
     const [dataEventosComunicadosInicial, setDataEventosComunicadosInicial] = useState([]);
     const [hasError, setHasError] = useState(false);
 
     const peticion_noticiasComunicados = async () => {
         try {
-            const response = await axios.get('http://127.0.0.1:8000/news/');
+            const response = await axios.get('https://4hf-assiduous-rutherford.circumeo-apps.net/news/');
             console.log("Datos de eventos/comunicados:", response.data);
             setDataEventosComunicadosInicial(response.data);
             setHasError(false);
@@ -28,57 +25,56 @@ const NoticiasComunicados = () => {
         peticion_noticiasComunicados();
     }, []);
 
-
     if (hasError) {
         return (
             <div>
-                <Cabecera />
+                <Cabecera activePage="empresa" />
                 <p>Puede que el servidor esté apagado o exista algún problema con el</p>
             </div>
         );
     }
-    // Filtrar comunicados importantes
+
     const comunicadoImportante = dataEventosComunicadosInicial.find(item => item.important_communication === true);
     const noticias = dataEventosComunicadosInicial.find(item => item.important_communication === false);
 
     return (
-
         <div className="informacionEmpleados">
-            <Cabecera />
+            <Cabecera activePage="empresa" />
             <div className="menu-infoImportante">
                 <div className='ordenar'>
-                    <MenuEmpresa />
+                    <MenuEmpresa EmpresaMenuActivo="noticiasComunicados"/>
                 </div>
-                <div className="informacion-lateralMenu">
+                <div className="informacion-lateralMenuNotiCom">
                     <Link to='/empresa/noticiasComunicados/noticias'>
-                        <div>
+                        <div className="notigen">
                             <h2>Noticias</h2>
                             {noticias && (
-                                //Falta meter el titulo, por temas del backend
                                 <div>
-                                    <p><strong>Titulo:</strong>{noticias.title}</p>
-                                    <p><strong>Contenido:</strong> {noticias.content}</p>
+                                    <p><strong>Titulo:</strong> {noticias.title}</p>
+                                    <p><strong>Fecha:</strong> {noticias.date}</p>
+                                    
                                     {noticias.image_url && <img src={noticias.image_url} alt="Comunicado" className="imgNoticiasComunicados"/>}
-                                    <p>Ver más</p>
                                 </div>
                             )}
-                        </div></Link>
+                        </div>
+                    </Link>
                     <Link to='/empresa/noticiasComunicados/comunicados'>
-                        <div>
+                        <div className="comunicadosgen">
                             <h2>Comunicados Importantes</h2>
                             {comunicadoImportante && (
                                 <div>
+                                    <p><strong>Titulo:</strong> {comunicadoImportante.title}</p>
                                     <p><strong>Fecha:</strong> {comunicadoImportante.date}</p>
-                                    <p><strong>Contenido:</strong> {comunicadoImportante.content}</p>
+                                    
                                     {comunicadoImportante.image_url && <img src={comunicadoImportante.image_url} alt="Comunicado" className="imgNoticiasComunicados"/>}
                                 </div>
                             )}
-
-                        </div></Link>
+                        </div>
+                    </Link>
                 </div>
             </div>
-
         </div>
     );
 };
-export default NoticiasComunicados; 
+
+export default NoticiasComunicados;

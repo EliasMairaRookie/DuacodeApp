@@ -1,6 +1,6 @@
 import MenuEmpresa from "../menuEmpresa";
 import Cabecera from "../../cabecera";
-import '../../../css/empresa/noticiasYComunicados/noticiasComunicados.css';
+import '../../../css/empresa/noticiasYComunicados/comunicados.css';
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useState } from "react";
@@ -12,7 +12,7 @@ const Comunicados = () => {
     const [hasError, setHasError] = useState(false);
 
     const peticion_comunicados = async () => {
-        await axios.get('http://127.0.0.1:8000/news/')
+        await axios.get('https://4hf-assiduous-rutherford.circumeo-apps.net/news/')
             .then(response => {
                 console.log(response.data);
                 setDataComunicados(response.data);
@@ -31,7 +31,7 @@ const Comunicados = () => {
     if (hasError) {
         return (
             <div>
-                <Cabecera />
+                <Cabecera activePage="empresa" />
                 <p>Puede que el servidor esté apagado o exista algún problema con el</p>
             </div>
         );
@@ -45,19 +45,25 @@ const Comunicados = () => {
 
     return (
         <div className="informacionEmpleados">
-            <Cabecera></Cabecera>
-            <div>
+            <Cabecera activePage="empresa" />
+            <div className="contenedorComunicados">
                 {comunicadosFiltrados.map((comunicados) => (
-                    <Link to={`/news/${comunicados.news_id}`} key={comunicados.news_id}>
+                    <Link to={`/empresa/noticiasComunicados/comunicados/news/${comunicados.news_id}`} key={comunicados.news_id}>
+                        <div className="comunicadosCard">
                         <p><strong>Titulo:</strong>{comunicados.title}</p>
                         <p><strong>Contenido:</strong> {comunicados.content}</p>
                         {comunicados.image_url && <img src={comunicados.image_url} alt="Comunicado" className="imgNoticiasComunicados" />}
-                        <p>Ver más</p>
+                        <p className="ver-mas">Ver más</p>
+                        </div>
                     </Link>
                 ))}
             </div>
-
-            <button><Link to='/empresa/noticiasComunicados'>Volver</Link></button>
+            <div className="volver">
+                <button className="btn-volver">
+                    <Link to='/empresa/noticiasComunicados'>Volver</Link>
+                </button>
+            </div>
+            
         </div>
     );
 }

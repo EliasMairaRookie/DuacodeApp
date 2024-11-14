@@ -17,21 +17,70 @@
 
 
 
-.ordenar{
-    width: 30%;
-    color: red;
 
-}
 /* main content ajustes.css */
 .informacion-lateralMenu {
     width: 60%;
     display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .colocarInfoLateral{
     text-align: center;
+    
 }
 
 .informacionExtra{
+    display: flex;
     margin-top: 70px;
+    width: 100%;
+    margin-bottom: 20px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+}
+.titulo{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center; 
+    margin-bottom: 20px;
+}
+
+.proxEvento{
+    background-color: #FFF;
+    border: 2px solid #DF1882;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    width: 60%;
+    height: auto;
+}
+.proxEvento:hover {
+    background-color: #FBE4F0;
+    transform: scale(1.05);
+}
+.proxEvento{
+        
+        background-color: #FFF;
+        border: 2px solid #DF1882;
+        padding: 20px;
+        border-radius: 8px;
+        text-align: center;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+    
+}
+
+.eventoFuturo{
+    width: 25%;
+    background-color: #FFF;
+        border: 2px solid #DF1882;
+        padding: 20px;
+        border-radius: 8px;
+        text-align: center;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+        justify-content: space-around;
 }

@@ -2,32 +2,159 @@
     box-sizing: border-box;
     padding: 0;
     margin: 0;
-    
 }
-.contenidoPaginaCalendario{
-    display: flex;
 
+.contenidoPaginaCalendario {
+    display: flex;
 }
-.sidebarCalendario{
-    width: 25%;
+
+/* Estilos del Sidebar */
+.sidebarCalendario {
+    width: 30%;
     padding-top: 10px;
-    background: #eaf9ff;
-    border-left: 1px solid #d3e2e8;
-}
-.calendario {
-    width: 75%;
-    padding:20px;
-    z-index: 0;
-    position: relative;
-    
-  }
-
-  .inputBuscarCalendario{
+    background: #fac9e3;
     display: flex;
-     width: 50% !important;
-    height: 25px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 1%;
+    border-left: 1px solid #d3e2e8;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.sidebarCalendario h2 {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    color: #DF1882;
+}
+
+.sidebarCalendario ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    color: #333;
+    font-size: 1.1em;
+    line-height: 1.6;
+}
+
+.sidebarCalendario ul li {
+    margin-bottom: 10px;
+}
+
+.sidebarCalendario label {
+    margin-top: 20px;
+    font-size: 1.1em;
+    color: #555;
+}
+
+/* Estilos de la caja de búsqueda */
+.containerInputCalendario {
+    display: flex;
     align-items: center;
     justify-content: center;
-  
+    margin-top: 20px;
+    width: 100%;
+}
+
+.inputBuscarCalendario {
+    display: flex;
+    width: 70%;
+    height: 35px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    outline: none;
+    transition: border 0.3s ease-in-out;
+    text-align: center;
+    padding: 5px;
+}
+
+.inputBuscarCalendario:focus {
+    border-color: #DF1882;
+}
+
+.btn-succes {
+    background-color: #DF1882;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 8px;
+    margin-left: 10px;
+    cursor: pointer;
+    font-size: 1.2em;
+    transition: background-color 0.3s ease;
+}
+
+.btn-succes:hover {
+    background-color: #DF1882;
+}
+
+/* Estilos del contenido de los eventos */
+.sidebarCalendario div {
+    background-color: #fff;
+    border: 1px solid #d3e2e8;
+    padding: 15px;
+    margin-top: 15px;
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.sidebarCalendario h2 {
+    margin-bottom: 5px;
+    font-size: 1.2em;
+    color: #333;
+}
+
+.sidebarCalendario p {
+    font-size: 1em;
+    color: #555;
+}
+
+.no-results {
+    margin-top: 20px;
+    color: #ff0000;
+    font-size: 1.2em;
+}
+
+/* Estilos del calendario */
+.calendario {
+    width: 75%;
+    padding: 20px;
+    z-index: 0;
+    position: relative;
+}
+
+label {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 20px;
   }
   
+  /* Estilos para el checkbox */
+  label input[type="checkbox"] {
+    margin-right: 10px;
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    border: 2px solid #DF1882;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out;
+  }
+  
+  /* Estilo cuando el checkbox está marcado */
+  label input[type="checkbox"]:checked {
+    background-color: #DF1882;
+    border-color: #c1156e;
+  }
+  
+  /* Efecto hover */
+  label input[type="checkbox"]:hover {
+    border-color: #c1156e;
+  }

@@ -8,6 +8,7 @@ function Ajustes() {
   const { selectedOffice, setSelectedOffice } = useOffice(); // No uses useContext directamente, usa el hook personalizado
 
   const handleChange = (event) => {
+    console.log(event.target.value)
     setSelectedOffice(event.target.value);
   };
 
@@ -29,8 +30,8 @@ function Ajustes() {
               <label>
                 <input
                   type="radio"
-                  value="Gl"
-                  checked={selectedOffice === 'Gl'}
+                  value="Galicia"
+                  checked={selectedOffice === 'Galicia'}
                   onChange={handleChange}
                 />
                 Galicia
@@ -40,8 +41,8 @@ function Ajustes() {
               <label>
                 <input
                   type="radio"
-                  value="Va"
-                  checked={selectedOffice === 'Va'}
+                  value="Valencia"
+                  checked={selectedOffice === 'Valencia'}
                   onChange={handleChange}
                 />
                 Valencia
