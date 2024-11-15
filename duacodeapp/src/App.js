@@ -27,8 +27,8 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={< Inicio />} />
-            <Route path="/ajustes" element={< Ajustes />} />
-            <Route path="/empleados" element={< Empleados />} />
+            <Route path="https://duacenter-duacode.web.app/ajustes" element={< Ajustes />} />
+            <Route path="https://duacenter-duacode.web.app/empleados" element={< Empleados />} />
             <Route path="/organigrama" element={< OrganizationChart />} />
 
 
