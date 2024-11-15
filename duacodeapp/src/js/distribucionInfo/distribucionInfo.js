@@ -3,6 +3,7 @@ import axios from 'axios';
 import '../../css/distribucionInfo.css';
 import Cabecera from "../cabecera.js";
 import { useOffice } from '../OfficeContext';
+import MenuDistribucionInfo from './menuDistribucionInfo.js';
 
 const DistribucionInfo = () => {
     const [rooms, setRooms] = useState([]);
@@ -42,7 +43,7 @@ const DistribucionInfo = () => {
     return (
         <>
             <Cabecera activePage="distribucionInfo" />
-
+            <MenuDistribucionInfo/>
             {/* Mapa de Galicia */}
             {selectedOffice === 'Galicia' && (
                 <div className="mapa">

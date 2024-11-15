@@ -24,7 +24,6 @@
 .noticiaCard {
   display: flex;
   flex-direction: column;
-  
   justify-content: space-between;
   width: 350px; /* Ancho fijo para las tarjetas */
   background-color: #ffffff;
@@ -85,7 +84,7 @@
     margin-top: 10px;
 }
 
-/* Responsive design */
+
 @media (max-width: 768px) {
     .contenedor-noticias {
         flex-direction: column;

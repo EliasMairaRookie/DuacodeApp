@@ -1,0 +1,64 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+ 
+}
+
+  /* Estilo para la imagen del empleado */
+
+  
+  /* Estilo para el título del nombre */
+   .h2 {
+    text-align: center;
+    font-size: 2em;
+    color: #DF1882;
+    margin: 10px 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+  
+  /* Estilo para los detalles del empleado */
+   .p {
+    font-size: 1.2em;
+    margin: 10px 0;
+    line-height: 1.6;
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Estilo para los campos destacados */
+   .p strong {
+    color: #DF1882;
+  }
+  
+  /* Estilo del botón */
+   .button {
+    display: block;
+    margin: 30px auto;
+    padding: 10px 20px;
+    font-size: 1.1em;
+    font-weight: bold;
+    background-color: #DF1882;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+  }
+  
+   .button:hover {
+    background-color: #A1125F;
+  }
+  
+   .button a {
+    text-decoration: none;
+    color: white;
+  }
+  
+   .button a:hover {
+    color: #F8F8F8;
+  }
+  

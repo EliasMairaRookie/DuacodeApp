@@ -1,6 +1,6 @@
 import MenuEmpresa from "../menuEmpresa";
 import Cabecera from "../../cabecera";
-import '../../../css/empresa/noticiasYComunicados/noticiasComunicados.css';
+import '../../../css/empresa/proyectosClientes/ProyectosAntiguos.css';
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
@@ -45,16 +45,23 @@ const ProyectosAntiguos = () => {
         <div className="informacionEmpleados">
             <Cabecera activePage="empresa" />
 
-            <div>
+            <div className="contenedorProyectoAntiguo">
                 {proyectosAntiguosFiltrados.map((proyectosAntiguos) => (
-                    <Link to={`/news/${proyectosAntiguos.project_id}`} key={proyectosAntiguos.project_id}>
-                        <p><strong>{proyectosAntiguos.title}</strong></p>
-                        <p><strong>Contenido:</strong> {proyectosAntiguos.objectives}</p>
+                    <Link to={`/empresa/proyectosClientes/antiguos/project/${proyectosAntiguos.project_id}`} key={proyectosAntiguos.project_id}>
+                        <div className="proyectoAntiguoTarjeta">
+                            <p><strong>{proyectosAntiguos.title}</strong></p>
+                            <p><strong>Contenido:</strong> {proyectosAntiguos.objectives}</p>
+                            <p className="ver-mas">Ver más</p>
+                        </div>
                     </Link>
                 ))}
             </div>
 
-            <button><Link to='/empresa/proyectosClientes'>Volver</Link></button>
+            <div className="volver">
+                <button className="btn-volver">
+                    <Link to='/empresa/proyectosClientes'>Volver</Link>
+                </button>
+            </div>
         </div>
     );
 }

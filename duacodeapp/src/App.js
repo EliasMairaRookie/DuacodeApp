@@ -18,7 +18,9 @@ import ProyectosActuales from './js/empresa/proyectosYClientes/proyectosActuales
 import OrganizationChart from './js/empleados/organigrama/organigrama.js';
 import { OfficeProvider } from './js/OfficeContext';
 import NoticiasEspecificas from './js/empresa/noticiasYComunicados/noticiasEspecificas.js';
-
+import InfoSalas from './js/distribucionInfo/infoSalas.js';
+import ProyectoActualEspecifico from './js/empresa/proyectosYClientes/especificos/proyectoActualEspecifico.js';
+import ProyectoAntiguoEspecifico from './js/empresa/proyectosYClientes/especificos/proyectoAntiguoEspecifico.js';
 
 function App() {
   return (
@@ -27,8 +29,8 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={< Inicio />} />
-            <Route path="https://duacenter-duacode.web.app/ajustes" element={< Ajustes />} />
-            <Route path="https://duacenter-duacode.web.app/empleados" element={< Empleados />} />
+            <Route path="/ajustes" element={< Ajustes />} />
+            <Route path="/empleados" element={< Empleados />} />
             <Route path="/organigrama" element={< OrganizationChart />} />
 
 
@@ -43,8 +45,12 @@ function App() {
 
             <Route path="/empresa/proyectosClientes/antiguos" element={<ProyectosAntiguos />} />
             <Route path="/empresa/proyectosClientes/actuales" element={<ProyectosActuales />} />
+            <Route path="/empresa/proyectosClientes/antiguos/project/:proyectAntiguioId" element={<ProyectoAntiguoEspecifico />} />
+            <Route path="/empresa/proyectosClientes/actuales/project/:proyectActualId" element={<ProyectoActualEspecifico />} />
 
-            <Route path="/distribucionInfo" element={< DistribucionInfo />} />
+            <Route path="/distribucionInfo/mapa" element={< DistribucionInfo />} />
+            <Route path="/distribucionInfo/info" element={< InfoSalas />} />
+
             <Route path="/calendario" element={< Calendario />} />
             <Route path="/protocolos" element={< Protocolos />} />
             <Route path="/empleados/:X" element={<EmpleadoEspecifico />} />

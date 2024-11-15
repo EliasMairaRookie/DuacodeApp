@@ -1,5 +1,5 @@
 import Cabecera from "../../cabecera";
-import '../../../css/empresa/noticiasYComunicados/noticiasComunicados.css';
+import '../../../css/empresa/proyectosClientes/ProyectosActuales.css';
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
@@ -48,16 +48,22 @@ const ProyectosActuales = () => {
         <div className="informacionEmpleados">
             <Cabecera activePage="empresa" />
 
-            <div>
+            <div className="contenedorProyectoActual">
                 {proyectosActualesFiltrados.map((proyectosActuales) => (
-                    <Link to={`/news/${proyectosActuales.project_id}`} key={proyectosActuales.project_id}>
-                        <p><strong>{proyectosActuales.title}</strong></p>
-                        <p><strong>Contenido:</strong> {proyectosActuales.objectives}</p>
+                    <Link to={`/empresa/proyectosClientes/actuales/project/${proyectosActuales.project_id}`} key={proyectosActuales.project_id}>
+                        <div className="proyectoActualTarjeta">
+                            <p><strong>{proyectosActuales.title}</strong></p>
+                            <p><strong>Contenido:</strong> {proyectosActuales.objectives}</p>
+                            <p className="ver-mas">Ver más</p>
+                        </div>
                     </Link>
                 ))}
             </div>
-
-            <button><Link to='/empresa/proyectosClientes'>Volver</Link></button>
+            <div className="volver">
+                <button className="btn-volver">
+                    <Link to='/empresa/proyectosClientes'>Volver</Link>
+                </button>
+            </div>
         </div>
     );
 }

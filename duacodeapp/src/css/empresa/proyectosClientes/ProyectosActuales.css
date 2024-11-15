@@ -1,0 +1,68 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    
+   
+}
+
+
+.contenedorProyectoActual {
+    display: flex;
+    flex-wrap: wrap; /* Para que los elementos se ajusten automáticamente en varias filas si es necesario */
+    gap: 20px; /* Espacio entre las tarjetas */
+    justify-content: center; /* Centra las tarjetas horizontalmente */
+    padding: 20px;
+    width: 100%;
+}
+
+
+.proyectoActualTarjeta {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 350px; /* Ancho fijo para las tarjetas */
+    background-color: #ffffff;
+    border: 2px solid #DF1882;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    overflow: hidden; /* Oculta cualquier contenido que desborde */
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    transition: background-color 0.3s ease;
+  }
+
+.proyectoActualTarjeta:hover {
+    background-color: #FBE4F0;
+    transform: scale(1.05);
+}
+
+.ver-mas {
+    color: #DF1882;
+    font-weight: bold;
+    text-align: right;
+    margin-top: 10px;
+}
+
+.volver {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.btn-volver:hover {
+    background-color: #BF126E;
+}
+
+.btn-volver a {
+    text-decoration: none;
+    color: white;
+}
+
+
+@media (max-width: 768px) {
+    
+    .proyectoActualTarjeta {
+        width: 300px;
+    }
+}
