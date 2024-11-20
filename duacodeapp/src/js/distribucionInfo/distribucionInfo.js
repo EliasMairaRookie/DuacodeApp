@@ -13,7 +13,7 @@ const DistribucionInfo = () => {
     // Fetch room data from backend
     const peticion_habitaciones = async () => {
         try {
-            const response = await axios.get('https://4hf-assiduous-rutherford.circumeo-apps.net/room/');
+            const response = await axios.get('https://idkmen.pythonanywhere.com/room/');
             console.log(response.data);
             setRooms(response.data);
         } catch (error) {

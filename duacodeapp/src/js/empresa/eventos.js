@@ -10,7 +10,7 @@ const Eventos = () => {
 
     const peticion_eventos = async () => {
         try {
-            const response = await axios.get('https://4hf-assiduous-rutherford.circumeo-apps.net/event/');
+            const response = await axios.get('https://idkmen.pythonanywhere.com/event/');
             console.log("Datos de eventos:", response.data);
             setDataEventos(response.data);
             setHasError(false);

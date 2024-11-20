@@ -32,7 +32,7 @@ const Calendario = () => {
 
   const peticion_calendario = async () => {
     try {
-      const response = await axios.get('https://4hf-assiduous-rutherford.circumeo-apps.net/event/');
+      const response = await axios.get('https://idkmen.pythonanywhere.com/event/');
       const events = response.data.map(event => ({
         event_id: event.event_id,
         title: event.title,

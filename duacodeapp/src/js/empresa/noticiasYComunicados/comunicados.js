@@ -12,7 +12,7 @@ const Comunicados = () => {
     const [hasError, setHasError] = useState(false);
 
     const peticion_comunicados = async () => {
-        await axios.get('https://4hf-assiduous-rutherford.circumeo-apps.net/news/')
+        await axios.get('https://idkmen.pythonanywhere.com/news/')
             .then(response => {
                 console.log(response.data);
                 setDataComunicados(response.data);

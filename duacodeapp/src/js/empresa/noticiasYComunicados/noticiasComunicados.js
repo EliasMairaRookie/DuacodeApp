@@ -11,7 +11,7 @@ const NoticiasComunicados = () => {
 
     const peticion_noticiasComunicados = async () => {
         try {
-            const response = await axios.get('https://4hf-assiduous-rutherford.circumeo-apps.net/news/');
+            const response = await axios.get('https://idkmen.pythonanywhere.com/news/');
             console.log("Datos de eventos/comunicados:", response.data);
             setDataEventosComunicadosInicial(response.data);
             setHasError(false);

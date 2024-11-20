@@ -14,7 +14,7 @@ const ProyectosClientes = () => {
 
     const peticion_proyectosIncial = async () => {
         try {
-            const response = await axios.get('https://4hf-assiduous-rutherford.circumeo-apps.net/project/');
+            const response = await axios.get('https://idkmen.pythonanywhere.com/project/');
             console.log("Datos de proyectos:", response.data);
             setdataProyectosInicial(response.data);
             setHasError(false);
@@ -25,7 +25,7 @@ const ProyectosClientes = () => {
     };
     const peticion_clientes = async () => {
         try {
-            const response = await axios.get('https://4hf-assiduous-rutherford.circumeo-apps.net/client/');
+            const response = await axios.get('https://idkmen.pythonanywhere.com/client/');
             console.log("Datos de clientes:", response.data);
             setDataClientes(response.data);
             setHasError(false);

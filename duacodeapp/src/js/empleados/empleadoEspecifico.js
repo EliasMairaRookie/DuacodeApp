@@ -12,7 +12,7 @@ const EmpleadoEspecifico = () => {
 
   const peticion_empleado = async () => {
     try {
-      const response = await axios.get(`https://4hf-assiduous-rutherford.circumeo-apps.net/employee/${X}`);
+      const response = await axios.get(`https://idkmen.pythonanywhere.com/employee/${X}`);
       console.log(response.data)
       setEmployee(response.data);
       setHasError(false);

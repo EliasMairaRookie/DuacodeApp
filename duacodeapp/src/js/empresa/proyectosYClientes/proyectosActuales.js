@@ -13,7 +13,7 @@ const ProyectosActuales = () => {
     const [hasError, setHasError] = useState(false);
 
     const peticion_proyectosActuales = async () => {
-        await axios.get('https://4hf-assiduous-rutherford.circumeo-apps.net/project/')
+        await axios.get('https://idkmen.pythonanywhere.com/project/')
             .then(response => {
                 console.log(response.data);
                 setDataProyectosActuales(response.data);

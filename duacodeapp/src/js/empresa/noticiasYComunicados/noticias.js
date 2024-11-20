@@ -12,7 +12,7 @@ const Noticias = () => {
 
     const peticion_noticias = async () => {
         try {
-            const response = await axios.get('https://4hf-assiduous-rutherford.circumeo-apps.net/news/');
+            const response = await axios.get('https://idkmen.pythonanywhere.com/news/');
             console.log(response.data);
             setDataNoticias(response.data);
             setHasError(false);

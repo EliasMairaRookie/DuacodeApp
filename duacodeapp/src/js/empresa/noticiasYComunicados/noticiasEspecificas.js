@@ -11,7 +11,7 @@ const NoticiasEspecificas = () => {
 
   const fetchNewsItem = async () => {
     try {
-      const response = await axios.get(`https://4hf-assiduous-rutherford.circumeo-apps.net/news/${newsId}`);
+      const response = await axios.get(`https://idkmen.pythonanywhere.com/news/${newsId}`);
       console.log(response.data);
       setNewsItem(response.data.length ? response.data[0] : null);
       setHasError(false);

@@ -14,7 +14,7 @@ function PdfComp({ id }) {
         let file;
         const peticion_verPdf = async () => {
             try {
-                const response = await axios.get(`https://4hf-assiduous-rutherford.circumeo-apps.net/pdfView/${id}`, {
+                const response = await axios.get(`https://idkmen.pythonanywhere.com/pdfView/${id}`, {
                     responseType: 'blob'
                 });
                 file = URL.createObjectURL(response.data);

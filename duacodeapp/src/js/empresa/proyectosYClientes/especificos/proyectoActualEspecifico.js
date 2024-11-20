@@ -11,7 +11,7 @@ const ProyectoActualEspecifico = () => {
 
   const fetchproyectActualItem = async () => {
     try {
-      const response = await axios.get(`https://4hf-assiduous-rutherford.circumeo-apps.net/project/${proyectActualId}`);
+      const response = await axios.get(`https://idkmen.pythonanywhere.com/project/${proyectActualId}`);
       console.log(response.data);
       setproyectActualItem(response.data.length ? response.data[0] : null);
       setHasError(false);
@@ -48,8 +48,8 @@ const ProyectoActualEspecifico = () => {
       <Cabecera activePage="noticias" />
       <div>
         <h2 className="h2">{proyectActualItem.title}</h2>
-        <p className="p"><strong>Fecha:</strong> {proyectActualItem.date}</p>
-        <p className="p"><strong>Contenido:</strong> {proyectActualItem.content}</p>
+        <p className="p"><strong>Contenido:</strong> {proyectActualItem.objetive}</p>
+
       </div>
       <button className="button"><Link to='/empresa/proyectosClientes'>Volver</Link></button>
     </div>

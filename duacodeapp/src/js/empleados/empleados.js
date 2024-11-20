@@ -21,7 +21,7 @@ const Empleados = () => {
   
 
   const peticion_empleados = async () => {
-    await axios.get('https://4hf-assiduous-rutherford.circumeo-apps.net/employee/')
+    await axios.get('https://idkmen.pythonanywhere.com/employee/')
       .then(response => {
         console.log(response.data);
         setDataEmployeeFiltrada(response.data);

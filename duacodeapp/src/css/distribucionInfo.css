@@ -23,6 +23,7 @@
         from {
             opacity: 0;
         }
+
         to {
             opacity: 1;
         }
@@ -31,7 +32,8 @@
     .habitacion {
         margin-top: 20px;
         background-color: #aaa;
-        width: calc(25% - 20px); /* Ajusta el ancho para 4 habitaciones por fila con el gap */
+        width: calc(25% - 20px);
+        /* Ajusta el ancho para 4 habitaciones por fila con el gap */
         height: 100px;
         color: #fff;
         display: flex;
@@ -48,7 +50,7 @@
 
     .habitacion:hover {
         background-color: #DF1882;
-        transform:scale3d();
+        transform: scale3d();
         box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
     }
 
@@ -60,7 +62,7 @@
         position: absolute;
         top: 100%;
         left: calc(50% - 7.5%);
-        
+
     }
 
     .pasilloHorizontal {
@@ -72,7 +74,7 @@
         top: calc(55% - 20px);
     }
 
-    .entrada{
+    .entrada {
         background-color: #DF1882;
         height: 550%;
         width: 1.15%;
@@ -80,7 +82,7 @@
         position: absolute;
         top: 100%;
         left: 49.4%;
-        
+
     }
 
 
@@ -93,7 +95,7 @@
         transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
     }
 
-    .colocarBotones{
+    .colocarBotones {
         width: 100%;
         display: flex;
         justify-content: center;
@@ -107,7 +109,6 @@
         align-items: center;
         justify-content: space-around;
         display: flex;
-       
         flex-wrap: wrap;
     }
 
@@ -132,64 +133,67 @@
     /* General layout */
 
 
-/* Room list container */
-.room-list {
-    text-align: center;
-    margin: 20px auto;
-    padding: 20px;
-    max-width: 600px;
-    border: 1px solid #DF1882;
-    border-radius: 10px;
-    background-color: #ffffff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-/* Title */
-.room-list h2 {
-    font-size: 1.5rem;
-    color: #DF1882;
-    margin-bottom: 20px;
-}
-
-/* List styling */
-.room-list ul {
-    list-style: none;
-    padding: 0;
-}
-
-.room-list li {
-    padding: 15px;
-    margin: 10px 0;
-    border: 2px solid #DF1882;
-    border-radius: 8px;
-    cursor: pointer;
-    background-color: #ffffff;
-    transition: all 0.3s ease;
-    font-size: 1.1rem;
-    color: #000000;
-    text-align: left;
-}
-
-/* Hover effect */
-.room-list li:hover {
-    background-color: #FBE4F0; /* Un toque suave del color principal */
-    transform: scale(1.02);
-}
-
-/* Selected room */
-.room-list li.selected-room {
-    background-color: #DF1882; /* Color principal */
-    color: #ffffff; /* Contraste con texto blanco */
-    font-weight: bold;
-}
-
-/* Media query for responsiveness */
-@media (max-width: 768px) {
+    /* Room list container */
     .room-list {
-        width: 90%;
+        text-align: center;
+        margin: 20px auto;
+        padding: 20px;
+        max-width: 600px;
+        border: 1px solid #DF1882;
+        border-radius: 10px;
+        background-color: #ffffff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Title */
+    .room-list h2 {
+        font-size: 1.5rem;
+        color: #DF1882;
+        margin-bottom: 20px;
+    }
+
+    /* List styling */
+    .room-list ul {
+        list-style: none;
+        padding: 0;
     }
 
     .room-list li {
-        font-size: 1rem;
+        padding: 15px;
+        margin: 10px 0;
+        border: 2px solid #DF1882;
+        border-radius: 8px;
+        cursor: pointer;
+        background-color: #ffffff;
+        transition: all 0.3s ease;
+        font-size: 1.1rem;
+        color: #000000;
+        text-align: left;
     }
-}
+
+    /* Hover effect */
+    .room-list li:hover {
+        background-color: #FBE4F0;
+        /* Un toque suave del color principal */
+        transform: scale(1.02);
+    }
+
+    /* Selected room */
+    .room-list li.selected-room {
+        background-color: #DF1882;
+        /* Color principal */
+        color: #ffffff;
+        /* Contraste con texto blanco */
+        font-weight: bold;
+    }
+
+    /* Media query for responsiveness */
+    @media (max-width: 768px) {
+        .room-list {
+            width: 90%;
+        }
+
+        .room-list li {
+            font-size: 1rem;
+        }
+    }

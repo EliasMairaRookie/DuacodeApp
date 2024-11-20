@@ -20,7 +20,7 @@ const Protocolos = () => {
 
     const peticion_protocolos = async () => {
         try {
-            const response = await axios.get('https://4hf-assiduous-rutherford.circumeo-apps.net/protocol/');
+            const response = await axios.get('https://idkmen.pythonanywhere.com/protocol/');
             setPdfFiles(response.data);
             setHasError(false);
         } catch (error) {
