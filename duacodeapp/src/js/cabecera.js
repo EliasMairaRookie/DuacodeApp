@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { MagicMotion } from 'react-magic-motion';
+
 
 const Cabecera = ({ activePage }) => {
   const [isSubmenuOpen, setIsSubmenuOpen] = useState(false);
@@ -47,7 +47,7 @@ const Cabecera = ({ activePage }) => {
         <div className={`menu-item-empresa ${activePage.startsWith('empresa') || isSubmenuOpen ? 'bold' : ''}`} 
              onClick={() => setIsSubmenuOpen(!isSubmenuOpen)} ref={menuRef}>
           <span>Empresa</span>
-          <MagicMotion in={isSubmenuOpen} transition={{ type: "tween", stiffness: 180, damping: 20, mass: 1.1 }}>
+          
             <div className={`submenu ${isSubmenuOpen ? 'active' : ''}`}>
               <div className="submenu-item">
                 <Link to='/empresa/informacionEmpresa' className='nav-url'>Información Empresa</Link>
@@ -62,7 +62,7 @@ const Cabecera = ({ activePage }) => {
                 <Link to='/empresa/proyectosClientes' className='nav-url'>Proyectos y Clientes</Link>
               </div>
             </div>
-          </MagicMotion>
+          
         </div>
 
         <div className={`menu-item ${activePage === 'distribucionInfo' ? 'bold' : ''}`}>

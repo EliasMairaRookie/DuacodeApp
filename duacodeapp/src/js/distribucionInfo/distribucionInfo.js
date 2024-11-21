@@ -6,11 +6,11 @@ import { useOffice } from '../OfficeContext';
 import MenuDistribucionInfo from './menuDistribucionInfo.js';
 
 const DistribucionInfo = () => {
-    const [rooms, setRooms] = useState([]);
-    const [selectedRoomId, setSelectedRoomId] = useState(null);
-    const { selectedOffice } = useOffice();
+    const [rooms, setRooms] = useState([]); // Lista de salas
+    const [selectedRoomId, setSelectedRoomId] = useState(null); // Sala seleccionada
+    const { selectedOffice } = useOffice(); // Oficina seleccionada
 
-    // Fetch room data from backend
+    // Obtener datos de las habitaciones desde el backend
     const peticion_habitaciones = async () => {
         try {
             const response = await axios.get('https://idkmen.pythonanywhere.com/room/');
@@ -35,22 +35,25 @@ const DistribucionInfo = () => {
         return false;
     });
 
-    // Handle button click to highlight the room
+    // Manejar la selección de sala
     const handleRoomSelect = (roomId) => {
         setSelectedRoomId(roomId);
     };
 
+    // Buscar la sala seleccionada
+    const selectedRoom = rooms.find(room => room.room_id === selectedRoomId);
+
     return (
         <>
             <Cabecera activePage="distribucionInfo" />
-            <MenuDistribucionInfo/>
+            <MenuDistribucionInfo />
+
             {/* Mapa de Galicia */}
             {selectedOffice === 'Galicia' && (
                 <div className="mapa">
                     <div className='pasilloHorizontal'>
                         <div className='entrada'></div>
                     </div>
-
                     {filteredRooms.map(room => (
                         <div
                             key={room.room_id}
@@ -58,7 +61,6 @@ const DistribucionInfo = () => {
                             onClick={() => handleRoomSelect(room.room_id)}
                         >
                             {room.name}
-                            {/* Condición para mostrar el pasillo vertical solo en ciertos IDs */}
                             {(room.room_id < 5) && (
                                 <div className='pasilloVertical'></div>
                             )}
@@ -73,7 +75,6 @@ const DistribucionInfo = () => {
                     <div className='pasilloHorizontal'>
                         <div className='entrada'></div>
                     </div>
-                    {/* Diseña el mapa de Valencia aquí */}
                     {filteredRooms.map(room => (
                         <div
                             key={room.room_id}
@@ -81,7 +82,7 @@ const DistribucionInfo = () => {
                             onClick={() => handleRoomSelect(room.room_id)}
                         >
                             {room.name}
-                            {((room.room_id > 8 && room.room_id < 13)) && (
+                            {(room.room_id > 8 && room.room_id < 13) && (
                                 <div className='pasilloVertical'></div>
                             )}
                         </div>
@@ -102,6 +103,17 @@ const DistribucionInfo = () => {
                     ))}
                 </div>
             </div>
+
+            {/* Información de la sala seleccionada */}
+            {selectedRoom && (
+                <div className="room-info">
+                    <h3>Información de la Sala</h3>
+                    <p><strong>Nombre:</strong> {selectedRoom.name}</p>
+                    <p><strong>Capacidad:</strong> {selectedRoom.capacity}</p>
+                    <p><strong>Ocupada:</strong> {selectedRoom.occupied ? "Sí" : "No"}</p>
+                    <p><strong>Número de ocupantes:</strong> {selectedRoom.occupied ? selectedRoom.capacity : 0}</p>
+                </div>
+            )}
         </>
     );
 };

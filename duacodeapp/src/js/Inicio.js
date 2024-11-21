@@ -23,12 +23,12 @@ const Inicio=()=> {
           <p>Noticias, eventos y proyectos activos en la empresa.</p>
         </Link>
 
-        <Link to="/infoSalas" className="section-card">
+        <Link to="/distribucionInfo/mapa" className="section-card">
           <h2>Mapa Salas</h2>
           <p>Mapa sobre las salas según la sede que este seleccionada</p>
         </Link>
         
-        <Link to="/distribucionInfo" className="section-card">
+        <Link to="/distribucionInfo/info" className="section-card">
           <h2>Salas y Disponibilidad</h2>
           <p>Revisa las salas disponibles, sus capacidades y su estado de ocupación.</p>
         </Link>

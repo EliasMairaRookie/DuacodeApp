@@ -187,6 +187,51 @@
         font-weight: bold;
     }
 
+
+
+    .room-info {
+        background-color: #ffffff; /* Fondo blanco para contraste */
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para darle profundidad */
+        margin: 20px auto; /* Centrar en el contenedor */
+        width: 80%; /* Ajusta según el diseño */
+        max-width: 400px; /* Limita el ancho máximo */
+        text-align: left; /* Alinear texto a la izquierda */
+        font-family: 'Arial', sans-serif; /* Fuente legible */
+        color: #333; /* Texto en color oscuro para contraste */
+        border: 2px solid #DF1882; /* Borde con color temático */
+        animation: fadeIn 0.5s ease-in-out; /* Animación suave */
+    }
+
+    .room-info h3 {
+        font-size: 1.5rem;
+        color: #DF1882; /* Color del título en el color principal */
+        margin-bottom: 15px;
+        text-align: center; /* Centrar el título */
+    }
+    
+    .room-info p {
+        margin-bottom: 10px;
+        font-size: 1rem;
+        line-height: 1.5; /* Espaciado entre líneas */
+    }
+    
+    .room-info p strong {
+        color: #DF1882; /* Destacar los títulos en el color principal */
+    }
+    
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
     /* Media query for responsiveness */
     @media (max-width: 768px) {
         .room-list {

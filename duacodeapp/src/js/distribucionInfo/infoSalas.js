@@ -55,7 +55,8 @@ const InfoSalas = () => {
                             className={room.room_id === selectedRoomId ? 'selected-room' : ''}
                             onClick={() => handleRoomSelect(room.room_id)}
                         >
-                            <strong>{room.name}</strong> - Capacidad: {room.capacity}
+                            <strong>{room.name}</strong> - Capacidad: {room.capacity} - 
+                            Ocupada: <strong>{room.occupied ? "Sí" : "No"}</strong>
                         </li>
                     ))}
                 </ul>
