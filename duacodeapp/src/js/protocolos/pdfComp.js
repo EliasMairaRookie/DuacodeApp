@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Document, Page, pdfjs } from 'react-pdf';
 import axios from 'axios';
+import WithLoader from '../WithLoader';
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
@@ -9,6 +10,7 @@ function PdfComp({ id }) {
     const [pageNumber, setPageNumber] = useState(1); // Iniciar en la primera página
     const [mostrar, setMostrar] = useState(null);
     const [viewMode, setViewMode] = useState('page-by-page'); // Modo de visualización: 'page-by-page' o 'all-pages'
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         let file;
@@ -20,8 +22,10 @@ function PdfComp({ id }) {
                 file = URL.createObjectURL(response.data);
                 setMostrar(file);
                 setPageNumber(1); // Reiniciar a la primera página cuando se cargue un nuevo documento
+                setIsLoading(false);
             } catch (error) {
                 console.error('Error al recuperar los datos:', error);
+                setIsLoading(false);
             }
         };
 
@@ -57,13 +61,14 @@ function PdfComp({ id }) {
     };
 
     if (!mostrar) {
-        return <p>No hay archivo seleccionado</p>;
+        return <WithLoader isLoading={isLoading}></WithLoader>;
     }
 
     return (
         <div className='pdfDiv'>
             <div className="controls">
                 {/* Botones para cambiar modo de visualización */}
+                
                 <button onClick={toggleViewMode}>
                     Cambiar a {viewMode === 'page-by-page' ? 'Ver todo' : 'Ver página por página'}
                 </button>
@@ -79,7 +84,7 @@ function PdfComp({ id }) {
                     </div>
                 )}
             </div>
-
+            
             {/* Mostrar la cantidad de páginas solo en modo "all-pages" */}
             {numPages && viewMode === 'page-by-page' && (
                 <p className="pageInfo">

@@ -4,12 +4,14 @@ import '../../css/distribucionInfo.css';
 import Cabecera from "../cabecera.js";
 import { useOffice } from '../OfficeContext.js';
 import MenuDistribucionInfo from './menuDistribucionInfo.js';
+import WithLoader from '../WithLoader.js';
 
 const InfoSalas = () => {
     // Estados locales
     const [rooms, setRooms] = useState([]); // Para almacenar las habitaciones
     const [selectedRoomId, setSelectedRoomId] = useState(null); // Para la sala seleccionada
     const { selectedOffice } = useOffice(); // Extraer oficina seleccionada del contexto
+    const [isLoading, setIsLoading] = useState(true);
 
     // Función para obtener las habitaciones
     const peticion_habitaciones = async () => {
@@ -17,8 +19,10 @@ const InfoSalas = () => {
             const response = await axios.get('https://idkmen.pythonanywhere.com/room/');
             console.log(response.data);
             setRooms(response.data);
+            setIsLoading(false);
         } catch (error) {
             console.error('Error fetching rooms:', error);
+            setIsLoading(false);
         }
     };
 
@@ -48,6 +52,7 @@ const InfoSalas = () => {
             <MenuDistribucionInfo />
             <div className="room-list">
                 <h2>Salas disponibles en {selectedOffice}</h2>
+                <WithLoader isLoading={isLoading}></WithLoader>
                 <ul>
                     {filteredRooms.map(room => (
                         <li 

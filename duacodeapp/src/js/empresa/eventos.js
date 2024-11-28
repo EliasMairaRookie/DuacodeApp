@@ -3,10 +3,12 @@ import Cabecera from "../cabecera";
 import '../../css/empresa/eventos.css';
 import { useEffect, useState } from "react";
 import axios from "axios";
+import WithLoader from "../WithLoader";
 
 const Eventos = () => {
     const [dataEventos, setDataEventos] = useState([]);
     const [hasError, setHasError] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
 
     const peticion_eventos = async () => {
         try {
@@ -14,9 +16,11 @@ const Eventos = () => {
             console.log("Datos de eventos:", response.data);
             setDataEventos(response.data);
             setHasError(false);
+            setIsLoading(false);
         } catch (error) {
             console.error('Error al recuperar los datos:', error);
             setHasError(true);
+            setIsLoading(false);
         }
     };
 
@@ -52,6 +56,7 @@ const Eventos = () => {
         <div className="informacionEmpleados">
             <Cabecera activePage="empresa" />
             <div className="menu-infoImportante">
+                <WithLoader isLoading={isLoading}></WithLoader>
                 <div className='ordenar'>
                     <MenuEmpresa EmpresaMenuActivo="eventos" />
                 </div>
@@ -72,10 +77,11 @@ const Eventos = () => {
                 <div className="titulo">
                     <h2>Próximos eventos</h2>
                 </div>
+                <div className="ordenarEventos">
                 {eventosRestantes.length > 0 ? (
                     eventosRestantes.map((evento, index) => (
                         <div key={index} className="eventoFuturo">
-                            <p>{evento.title}</p>
+                            <h3>{evento.title}</h3>
                             <p>{new Date(evento.date_start).toLocaleString()}</p>
                             <p>{evento.content}</p>
                         </div>
@@ -83,6 +89,7 @@ const Eventos = () => {
                 ) : (
                     <p>No hay más eventos futuros.</p>
                 )}
+                </div>
             </div>
         </div>
     );

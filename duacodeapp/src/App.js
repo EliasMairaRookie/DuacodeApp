@@ -22,6 +22,8 @@ import InfoSalas from './js/distribucionInfo/infoSalas.js';
 import ProyectoActualEspecifico from './js/empresa/proyectosYClientes/especificos/proyectoActualEspecifico.js';
 import ProyectoAntiguoEspecifico from './js/empresa/proyectosYClientes/especificos/proyectoAntiguoEspecifico.js';
 
+
+
 function App() {
   return (
     <div>
@@ -45,7 +47,7 @@ function App() {
 
             <Route path="/empresa/proyectosClientes/antiguos" element={<ProyectosAntiguos />} />
             <Route path="/empresa/proyectosClientes/actuales" element={<ProyectosActuales />} />
-            <Route path="/empresa/proyectosClientes/antiguos/project/:proyectAntiguioId" element={<ProyectoAntiguoEspecifico />} />
+            <Route path="/empresa/proyectosClientes/antiguos/project/:proyectAntiguoId" element={<ProyectoAntiguoEspecifico />} />
             <Route path="/empresa/proyectosClientes/actuales/project/:proyectActualId" element={<ProyectoActualEspecifico />} />
 
             <Route path="/distribucionInfo/mapa" element={< DistribucionInfo />} />

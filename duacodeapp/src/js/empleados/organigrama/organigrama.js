@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Tree, TreeNode } from 'react-organizational-chart';
 import Cabecera from '../../cabecera';
 import MenuEmpleados from '../menuEmpleados.js';
+import WithLoader from '../../WithLoader.js';
 
 // Componente para mostrar cada miembro del equipo
 const MemberCard = ({ member }) => (
@@ -49,6 +50,7 @@ const renderSubordinates = (subordinates) => {
 
 const Organigrama = () => {
   const [data, setData] = useState(null);
+  const [isLoading, setIsLoading] = useState(true); // Estado de carga
 
   useEffect(() => {
     const fetchData = async () => {
@@ -57,45 +59,48 @@ const Organigrama = () => {
         setData(response.data);
       } catch (error) {
         console.error('Error fetching the data', error);
+      } finally {
+        setIsLoading(false); // Cambiar el estado de carga cuando los datos estén listos
       }
     };
 
     fetchData();
   }, []);
 
-  if (!data) {
-    return (
-      <div>
-        <div>Cargando...</div>
-      </div>
-    );
-  }
-
-  const { general_director } = data;
-
   return (
-    <div>
-      <Cabecera activePage="empleados" />
-      <MenuEmpleados />
-      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-        <Tree
-          lineWidth={'2px'}
-          lineColor={'#000'}
-          lineBorderRadius={'10px'}
-          label={
-            <div style={{ width: '25%', margin: '0 auto' }}>
-              <MemberCard member={general_director} />
+    <WithLoader isLoading={isLoading}>
+      <div>
+        <Cabecera activePage="empleados" />
+        <MenuEmpleados />
+        <div style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center'
+        }}>
+          {/* Agregar clase 'fade-in' cuando los datos estén disponibles */}
+          {data && (
+            <div className={isLoading ? '' : 'fade-in'}>
+              <Tree
+                lineWidth={'2px'}
+                lineColor={'#000'}
+                lineBorderRadius={'10px'}
+                label={
+                  <div style={{ width: '25%', margin: '0 auto' }}>
+                    <MemberCard member={data.general_director} />
+                  </div>
+                }
+              >
+                {data.general_director.departments && Object.entries(data.general_director.departments).map(([key, department]) => (
+                  <TreeNode key={key} label={<MemberCard member={department} />}>
+                    {department.subordinates && renderSubordinates(department.subordinates)}
+                  </TreeNode>
+                ))}
+              </Tree>
             </div>
-          }
-        >
-          {general_director.departments && Object.entries(general_director.departments).map(([key, department]) => (
-            <TreeNode key={key} label={<MemberCard member={department} />}>
-              {department.subordinates && renderSubordinates(department.subordinates)}
-            </TreeNode>
-          ))}
-        </Tree>
+          )}
+        </div>
       </div>
-    </div>
+    </WithLoader>
   );
 };
 

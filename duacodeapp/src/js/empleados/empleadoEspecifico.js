@@ -1,14 +1,16 @@
-import Cabecera from "../cabecera";
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import Cabecera from "../cabecera";
+import WithLoader from "../WithLoader";  // Importamos WithLoader
 import '../../css/empleados/empleadoEspecifico.css';
 
 const EmpleadoEspecifico = () => {
   const [employee, setEmployee] = useState(null); // Datos del empleado actual
   const [supervisorName, setSupervisorName] = useState(null); // Nombre del supervisor
   const [hasError, setHasError] = useState(false);
+  const [isLoading, setIsLoading] = useState(true); // Estado de carga
   const { X } = useParams(); // Obtiene el parámetro de la URL (ID del empleado)
 
   // Función para obtener los datos del empleado
@@ -26,6 +28,8 @@ const EmpleadoEspecifico = () => {
     } catch (error) {
       console.error("Error al recuperar los datos:", error);
       setHasError(true);
+    } finally {
+      setIsLoading(false); // Cambia el estado de carga a false cuando termine la petición
     }
   };
 
@@ -54,37 +58,35 @@ const EmpleadoEspecifico = () => {
     );
   }
 
-  if (!employee) {
-    return (
+  // Usamos el componente WithLoader para envolver el contenido y mostrar el Loader mientras cargamos
+  return (
+    
       <div>
         <Cabecera activePage="empleados" />
-        <p>Cargando datos del empleado...</p>
+        <WithLoader isLoading={isLoading}>
+        {employee && (
+          <div>
+            <img src={employee.picture} alt={employee.name} className="imagen" />
+            <h2 className="h2">{employee.name}</h2>
+            <p className="p"><strong>Id:</strong> {employee.employee_id}</p>
+            <p className="p"><strong>Email:</strong> {employee.email}</p>
+            <p className="p"><strong>Phone:</strong> {employee.phone}</p>
+            <p className="p"><strong>Job Title:</strong> {employee.job_title}</p>
+            <p className="p"><strong>Status:</strong> {employee.status}</p>
+            <p className="p"><strong>Department:</strong> {employee.department}</p>
+            <p className="p"><strong>Office:</strong> {employee.office}</p>
+            <p className="p"><strong>Supervisor:</strong> {supervisorName || "No disponible"}</p>
+            <p className="p"><strong>Holidays:</strong> {employee.holidays}</p>
+            <p className="p"><strong>Birthday:</strong> {employee.birthday}</p>
+            <p className="p"><strong>Antiquity:</strong> {employee.antiquity}</p>
+          </div>
+        )}
+        <button className="button">
+          <Link to="/empleados">Volver</Link>
+        </button>
+        </WithLoader>
       </div>
-    );
-  }
-
-  return (
-    <div>
-      <Cabecera activePage="empleados" />
-      <div>
-        <img src={employee.picture} alt={employee.name} className="imagen" />
-        <h2 className="h2">{employee.name}</h2>
-        <p className="p"><strong>Id:</strong> {employee.employee_id}</p>
-        <p className="p"><strong>Email:</strong> {employee.email}</p>
-        <p className="p"><strong>Phone:</strong> {employee.phone}</p>
-        <p className="p"><strong>Job Title:</strong> {employee.job_title}</p>
-        <p className="p"><strong>Status:</strong> {employee.status}</p>
-        <p className="p"><strong>Department:</strong> {employee.department}</p>
-        <p className="p"><strong>Office:</strong> {employee.office}</p>
-        <p className="p"><strong>Supervisor:</strong> {supervisorName || "No disponible"}</p>
-        <p className="p"><strong>Holidays:</strong> {employee.holidays}</p>
-        <p className="p"><strong>Birthday:</strong> {employee.birthday}</p>
-        <p className="p"><strong>Antiquity:</strong> {employee.antiquity}</p>
-      </div>
-      <button className="button">
-        <Link to="/empleados">Volver</Link>
-      </button>
-    </div>
+    
   );
 };
 

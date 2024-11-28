@@ -5,11 +5,13 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 import { useEffect } from "react";
+import WithLoader from "../../WithLoader";
 
 const ProyectosAntiguos = () => {
 
     const [dataProyectosAntiguos, setDataProyectosAntiguos] = useState([]);
     const [hasError, setHasError] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
 
     const peticion_proyectosAntiguos = async () => {
         await axios.get('https://idkmen.pythonanywhere.com/project/')
@@ -17,9 +19,11 @@ const ProyectosAntiguos = () => {
                 console.log(response.data);
                 setDataProyectosAntiguos(response.data);
                 setHasError(false);
+                setIsLoading(false);
             })
             .catch(error => {
                 console.error('Error al recuperar los datos:', error);
+                setIsLoading(false);
                 setHasError(true);
             });
     };
@@ -44,7 +48,7 @@ const ProyectosAntiguos = () => {
     return (
         <div className="informacionEmpleados">
             <Cabecera activePage="empresa" />
-
+            <WithLoader isLoading={isLoading}></WithLoader>
             <div className="contenedorProyectoAntiguo">
                 {proyectosAntiguosFiltrados.map((proyectosAntiguos) => (
                     <Link to={`/empresa/proyectosClientes/antiguos/project/${proyectosAntiguos.project_id}`} key={proyectosAntiguos.project_id}>

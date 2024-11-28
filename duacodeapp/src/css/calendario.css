@@ -158,3 +158,60 @@ label {
   label input[type="checkbox"]:hover {
     border-color: #c1156e;
   }
+
+  /* Contenedor principal */
+/* Estilos para el contenedor principal */
+.restoDeEventos {
+    display: flex;
+    flex-wrap: wrap; /* Permite envolver las columnas en nuevas filas */
+    gap: 20px; /* Espaciado entre columnas */
+    justify-content: center; /* Centrar las columnas dentro del contenedor */
+    padding: 20px;
+    margin: 20px 0;
+    background-color: #fac9e3; /* Fondo similar al sidebar */
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+}
+
+/* Título del contenedor */
+.restoDeEventos h2 {
+    flex-basis: 100%; /* Ocupar toda la fila */
+    text-align: center;
+    font-size: 1.8em;
+    color: #DF1882; /* Color principal */
+    margin-bottom: 20px;
+}
+
+/* Estilos de cada columna (evento) */
+.restoDeEventos > div {
+    background-color: #fff; /* Fondo blanco para cada evento */
+    border: 1px solid #d3e2e8;
+    border-radius: 8px;
+    padding: 15px;
+    flex: 1 1 calc(25% - 20px); /* Ocupa el 25% del ancho, menos el gap */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Hover para cada evento */
+.restoDeEventos > div:hover {
+    transform: scale(1.02); /* Ampliar ligeramente al pasar el ratón */
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Estilos para el contenido de cada evento */
+.restoDeEventos > div h2 {
+    font-size: 1.2em;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.restoDeEventos > div p {
+    font-size: 1em;
+    color: #555;
+    margin-bottom: 5px;
+}

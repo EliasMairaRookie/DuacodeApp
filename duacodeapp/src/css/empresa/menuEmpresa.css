@@ -18,6 +18,7 @@
     padding: 25px 0;
     border-bottom: 1px solid #DF1882;
     font-size: 1.2rem;
+    max-width: 40vh;
 }
 
 .bold {

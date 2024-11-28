@@ -1,73 +1,114 @@
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
- 
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+
 }
 
-  /* Estilo para la imagen del empleado */
-  /* probar filter:drop-shadow(0 0 10px rgba(0,0,0, .8)) */
-   .imagen {
-    border-radius: 50%;
-    width: 150px;
-    height: 150px;
-    object-fit: cover;
-    margin: 20px auto;
-    display: block;
+/* Estilos para la imagen del empleado */
+.imagen {
+  border-radius: 10px; /* Bordes más suaves */
+  width: 220px;
+  max-height: 220px;
 
-  }
-  
-  /* Estilo para el título del nombre */
-   .h2 {
-    text-align: center;
-    font-size: 2em;
-    color: #DF1882;
-    margin: 10px 0;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  }
-  
-  /* Estilo para los detalles del empleado */
-   .p {
-    font-size: 1.2em;
-    margin: 10px 0;
-    line-height: 1.6;
-    background-color: rgba(255, 255, 255, 0.2);
-    padding: 10px;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  }
-  
-  /* Estilo para los campos destacados */
-   .p strong {
-    color: #DF1882;
-  }
-  
-  /* Estilo del botón */
-   .button {
-    display: block;
-    margin: 30px auto;
-    padding: 10px 20px;
-    font-size: 1.1em;
-    font-weight: bold;
-    background-color: #DF1882;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    transition: background-color 0.3s ease;
-  }
-  
-   .button:hover {
-    background-color: #A1125F;
-  }
-  
-   .button a {
-    text-decoration: none;
-    color: white;
-  }
-  
-   .button a:hover {
-    color: #F8F8F8;
-  }
-  
+  margin: 20px auto;
+  display: block;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Sombra más sutil para dar profundidad */
+  transition: transform 0.3s ease-in-out;
+}
+
+.imagen:hover {
+  transform: scale(1.05); /* Efecto hover suave */
+}
+
+/* Estilo para el título */
+.h2 {
+  text-align: center;
+  font-size: 2.2em;
+  color: #DF1882;
+  margin: 20px 0;
+  font-weight: bold;
+}
+
+/* Estilo para los detalles del empleado */
+.p {
+  font-size: 1.2em;
+  margin: 15px 0;
+  line-height: 1.8;
+  background-color: rgba(255, 255, 255, 0.8); /* Fondo más opaco para mejorar contraste */
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave para dar profundidad */
+  transition: all 0.3s ease; /* Efecto suave para el hover */
+}
+
+.p:hover {
+  background-color: rgba(255, 255, 255, 0.9); /* Cambio de fondo al pasar el ratón */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Aumenta la sombra en el hover */
+}
+
+/* Estilo para los campos destacados */
+.p strong {
+  color: #DF1882;
+  font-weight: bold;
+}
+
+/* Estilo del botón */
+.button {
+  display: inline-block;
+  margin: 30px auto;
+  padding: 12px 24px;
+  font-size: 1.2em;
+  font-weight: 600;
+  background-color: #DF1882;
+  color: white;
+  border: none;
+  border-radius: 8px; /* Bordes más redondeados */
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra sutil para el botón */
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.button:hover {
+  background-color: #A1125F; /* Color de hover más oscuro */
+  transform: scale(1.05); /* Efecto de escala suave en hover */
+}
+
+.button a {
+  text-decoration: none;
+  color: white;
+  display: block;
+}
+
+.button a:hover {
+  color: #F8F8F8; /* Cambio de color al pasar el ratón */
+}
+
+/* Mejoras de accesibilidad y espaciado */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+
+.content h2 {
+  margin-bottom: 20px;
+}
+
+.content p {
+  max-width: 800px;
+  text-align: left;
+}
+
+button {
+  margin-top: 40px;
+}

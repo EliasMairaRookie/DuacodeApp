@@ -4,13 +4,14 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 import { useEffect } from "react";
-
+import WithLoader from "../../WithLoader";
 
 
 const ProyectosActuales = () => {
 
     const [dataProyectosActuales, setDataProyectosActuales] = useState([]);
     const [hasError, setHasError] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
 
     const peticion_proyectosActuales = async () => {
         await axios.get('https://idkmen.pythonanywhere.com/project/')
@@ -18,9 +19,11 @@ const ProyectosActuales = () => {
                 console.log(response.data);
                 setDataProyectosActuales(response.data);
                 setHasError(false);
+                setIsLoading(false);
             })
             .catch(error => {
                 console.error('Error al recuperar los datos:', error);
+                setIsLoading(false);
                 setHasError(true);
             });
     };
@@ -47,7 +50,7 @@ const ProyectosActuales = () => {
     return (
         <div className="informacionEmpleados">
             <Cabecera activePage="empresa" />
-
+            <WithLoader isLoading={isLoading}></WithLoader>
             <div className="contenedorProyectoActual">
                 {proyectosActualesFiltrados.map((proyectosActuales) => (
                     <Link to={`/empresa/proyectosClientes/actuales/project/${proyectosActuales.project_id}`} key={proyectosActuales.project_id}>

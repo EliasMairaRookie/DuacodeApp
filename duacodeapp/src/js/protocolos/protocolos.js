@@ -7,6 +7,7 @@ import { pdfjs } from 'react-pdf';
 import PdfComp from './pdfComp';
 import 'react-pdf/dist/Page/AnnotationLayer.css';
 import '../../css/protocolos.css';
+import WithLoader from '../WithLoader';
 
 pdfjs.GlobalWorkerOptions.workerSrc = new URL(
     'pdfjs-dist/build/pdf.worker.min.mjs',
@@ -17,15 +18,19 @@ const Protocolos = () => {
     const [pdfFiles, setPdfFiles] = useState([]);
     const [selectedPdf, setSelectedPdf] = useState(null);
     const [hasError, setHasError] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
+    
 
     const peticion_protocolos = async () => {
         try {
             const response = await axios.get('https://idkmen.pythonanywhere.com/protocol/');
             setPdfFiles(response.data);
             setHasError(false);
+            setIsLoading(false);
         } catch (error) {
             console.error('Error al recuperar los datos:', error);
             setHasError(true);
+            setIsLoading(false);
         }
     };
 
@@ -48,6 +53,7 @@ const Protocolos = () => {
             <div className='encuadre'>
                 {/* Contenedor de botones y títulos de PDF */}
                 <div className='pdfDisplay'>
+                <WithLoader isLoading={isLoading}></WithLoader>
                     {pdfFiles.map(pdf => (
                         <div key={pdf.protocol_id} className='individualPdf'>
                             <h3>

@@ -4,11 +4,13 @@ import '../../css/distribucionInfo.css';
 import Cabecera from "../cabecera.js";
 import { useOffice } from '../OfficeContext';
 import MenuDistribucionInfo from './menuDistribucionInfo.js';
+import WithLoader from '../WithLoader.js';
 
 const DistribucionInfo = () => {
     const [rooms, setRooms] = useState([]); // Lista de salas
     const [selectedRoomId, setSelectedRoomId] = useState(null); // Sala seleccionada
     const { selectedOffice } = useOffice(); // Oficina seleccionada
+    const [isLoading, setIsLoading] = useState(true);
 
     // Obtener datos de las habitaciones desde el backend
     const peticion_habitaciones = async () => {
@@ -16,8 +18,10 @@ const DistribucionInfo = () => {
             const response = await axios.get('https://idkmen.pythonanywhere.com/room/');
             console.log(response.data);
             setRooms(response.data);
+            setIsLoading(false);
         } catch (error) {
             console.error('Error fetching rooms:', error);
+            setIsLoading(false);
         }
     };
 
@@ -47,7 +51,7 @@ const DistribucionInfo = () => {
         <>
             <Cabecera activePage="distribucionInfo" />
             <MenuDistribucionInfo />
-
+            <WithLoader isLoading={isLoading}></WithLoader>
             {/* Mapa de Galicia */}
             {selectedOffice === 'Galicia' && (
                 <div className="mapa">

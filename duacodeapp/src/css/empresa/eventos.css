@@ -6,14 +6,7 @@
     
     
 }
-.menu-infoImportante{
-    margin-top: 40px;
-    display: flex;
-    width: 100%;
-    justify-content:space-around ;
-    align-items: center;
-    
-}
+
 
 
 
@@ -83,4 +76,18 @@
         text-align: center;
         transition: background-color 0.3s ease, transform 0.3s ease;
         justify-content: space-around;
+}
+
+.ordenarEventos{
+    display: flex;
+    flex-wrap: wrap; /* Permite que las tarjetas se ajusten a múltiples filas si es necesario */
+    gap: 20px; /* Espacio entre las tarjetas */
+    justify-content: center; /* Centra las tarjetas en el contenedor */
+    width: 100%;
+    padding: 20px;
+    
+}
+.eventoFuturo:hover {
+    background-color: #FBE4F0;
+    transform: scale(1.05);
 }

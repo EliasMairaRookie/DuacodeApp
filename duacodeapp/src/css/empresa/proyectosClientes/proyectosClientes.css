@@ -14,11 +14,19 @@
     align-items: center;
     
 }
+.informacion-lateralMenuClientes {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
 
 .proyectos{
     background-color: #FFF;
     border: 2px solid #DF1882;
     padding: 20px;
+    margin-top: 20px;
     border-radius: 8px;
     text-align: center;
     transition: background-color 0.3s ease, transform 0.3s ease;

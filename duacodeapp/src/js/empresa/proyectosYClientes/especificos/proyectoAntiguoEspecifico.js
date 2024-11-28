@@ -3,11 +3,13 @@ import Cabecera from "../../../cabecera";
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
+import WithLoader from '../../../WithLoader';
 
 const ProyectoAntiguoEspecifico = () => {
   const [proyectAntiguoItem, setproyectAntiguoItem] = useState([]);
   const [hasError, setHasError] = useState(false);
   const { proyectAntiguoId } = useParams(); // Obtiene el parámetro de la URL (ID de la noticia)
+  const [isLoading, setIsLoading] = useState(true);
 
   const fetchproyectAntiguoItem = async () => {
     try {
@@ -15,8 +17,10 @@ const ProyectoAntiguoEspecifico = () => {
       console.log(response.data);
       setproyectAntiguoItem(response.data.length ? response.data[0] : null);
       setHasError(false);
+      setIsLoading(false);
     } catch (error) {
       console.error('Error al recuperar los datos:', error);
+      setIsLoading(false);
       setHasError(true);
     }
   };
@@ -34,24 +38,18 @@ const ProyectoAntiguoEspecifico = () => {
     );
   }
 
-  if (!proyectAntiguoItem) {
-    return (
-      <div>
-        <Cabecera activePage="noticias" />
-        <p>Cargando datos de la noticia...</p>
-      </div>
-    );
-  }
+
 
   return (
     <div>
       <Cabecera activePage="noticias" />
+      <WithLoader isLoading={isLoading}></WithLoader>
       <div>
-        
+      
         <h2 className="h2">{proyectAntiguoItem.title}</h2>
-        <p className="p"><strong>Contenido:</strong> {proyectAntiguoItem.objetive}</p>
+        <p className="p"><strong>Contenido:</strong> {proyectAntiguoItem.objectives}</p>
       </div>
-      <button className="button"><Link to='/empresa/proyectosClientes'>Volver</Link></button>
+      <button className="button"><Link to='/empresa/proyectosClientes/antiguos'>Volver</Link></button>
     </div>
   );
 };

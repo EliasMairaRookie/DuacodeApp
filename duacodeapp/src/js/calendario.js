@@ -1,5 +1,5 @@
-import Cabecera from './cabecera';
 import React, { useEffect, useState } from 'react';
+import Cabecera from './cabecera';
 import '../css/calendario.css';
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
@@ -8,6 +8,7 @@ import listPlugin from '@fullcalendar/list';
 import axios from 'axios';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import WithLoader from './WithLoader';
 
 // Función para formatear fechas en formato día/mes/año
 const formatDate = (dateString) => {
@@ -19,13 +20,13 @@ const formatDate = (dateString) => {
 };
 
 const Calendario = () => {
-
   const [dataCalendarFiltrada, setDataCalendarFiltrada] = useState([]);
   const [weekendsVisible, setWeekendVisible] = useState(true);
   const [dataCalendar, setDataCalendar] = useState([]);
   const [hasError, setHasError] = useState(false);
   const [busqueda, setBusqueda] = useState("");
-
+  const [isLoading, setIsLoading] = useState(true);
+  
   function botonMostrarSemanas() {
     setWeekendVisible(!weekendsVisible);
   }
@@ -46,9 +47,11 @@ const Calendario = () => {
       setDataCalendarFiltrada(events);
       setDataCalendar(events);
       setHasError(false);
+      setIsLoading(false);
     } catch (error) {
       console.error('Error al recuperar los datos:', error);
       setHasError(true);
+      setIsLoading(false);
     }
   };
 
@@ -80,11 +83,13 @@ const Calendario = () => {
     );
   }
 
+  // Dividir los eventos
+  const [primerEvento, ...restoEventos] = dataCalendar;
+
   return (
     <div className='PaginaCalendario'>
       <Cabecera activePage="calendario" />
       <div className='contenidoPaginaCalendario'>
-
         <div className='calendario'>
           <FullCalendar
             plugins={[dayGridPlugin, timeGridPlugin, listPlugin]}
@@ -105,6 +110,8 @@ const Calendario = () => {
             }}
           />
         </div>
+
+        <WithLoader isLoading={isLoading}></WithLoader>
 
         <div className='sidebarCalendario'>
           <h2>Instructions</h2>
@@ -133,23 +140,43 @@ const Calendario = () => {
             </button>
           </div>
 
-          {dataCalendar.map((dataCalendar) => (
-            <div key={dataCalendar.event_id}>
-              <h2>{dataCalendar.title}</h2>
-              <p><strong>Id:</strong> {dataCalendar.event_id}</p>
-              <p><strong>Contenido:</strong> {dataCalendar.extendedProps.content}</p>
-              <p><strong>Fecha de inicio:</strong> {formatDate(dataCalendar.start)}</p>
-              <p><strong>Fecha de finalización:</strong> {formatDate(dataCalendar.end)}</p>
-              <p><strong>Sala:</strong> {dataCalendar.extendedProps.room}</p>
+          {primerEvento ? (
+            <div>
+              <h2>{primerEvento.title}</h2>
+              <p><strong>Id:</strong> {primerEvento.event_id}</p>
+              <p><strong>Contenido:</strong> {primerEvento.extendedProps.content}</p>
+              <p><strong>Fecha de inicio:</strong> {formatDate(primerEvento.start)}</p>
+              <p><strong>Fecha de finalización:</strong> {formatDate(primerEvento.end)}</p>
+              <p><strong>Sala:</strong> {primerEvento.extendedProps.room}</p>
             </div>
-          ))}
-
-          {dataCalendar.length === 0 && (
+          ) : (
             <div className="no-results">
               No hay eventos.
             </div>
           )}
+
+          
         </div>
+      </div>
+
+      <div className='restoDeEventos'>
+        <h2>Eventos del Calendario</h2>
+        {restoEventos.length > 0 ? (
+          restoEventos.map(evento => (
+            <div key={evento.event_id}>
+              <h2>{evento.title}</h2>
+              <p><strong>Id:</strong> {evento.event_id}</p>
+              <p><strong>Contenido:</strong> {evento.extendedProps.content}</p>
+              <p><strong>Fecha de inicio:</strong> {formatDate(evento.start)}</p>
+              <p><strong>Fecha de finalización:</strong> {formatDate(evento.end)}</p>
+              <p><strong>Sala:</strong> {evento.extendedProps.room}</p>
+            </div>
+          ))
+        ) : (
+          <div className="no-results">
+            No hay eventos adicionales.
+          </div>
+        )}
       </div>
     </div>
   );
