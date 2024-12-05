@@ -19,7 +19,6 @@ const Protocolos = () => {
     const [selectedPdf, setSelectedPdf] = useState(null);
     const [hasError, setHasError] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
-    
 
     const peticion_protocolos = async () => {
         try {
@@ -53,7 +52,7 @@ const Protocolos = () => {
             <div className='encuadre'>
                 {/* Contenedor de botones y títulos de PDF */}
                 <div className='pdfDisplay'>
-                <WithLoader isLoading={isLoading}></WithLoader>
+                    <WithLoader isLoading={isLoading}></WithLoader>
                     {pdfFiles.map(pdf => (
                         <div key={pdf.protocol_id} className='individualPdf'>
                             <h3>

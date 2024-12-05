@@ -92,10 +92,10 @@ const Empleados = () => {
                   <img src={employee.picture} alt={employee.name} />
                   <h2>{employee.name}</h2>
                   <p><strong>Id:</strong> {employee.employee_id}</p>
-                  <p><strong>Email:</strong> {employee.email}</p>
-                  <p><strong>Phone:</strong> {employee.phone}</p>
-                  <p><strong>Job Title:</strong> {employee.job_title}</p>
-                  <p><strong>Status:</strong> {employee.status}</p>
+                  <p><strong>Correo:</strong> {employee.email}</p>
+                  <p><strong>Telefono:</strong> {employee.phone}</p>
+                  <p><strong>Puesto:</strong> {employee.job_title}</p>
+                  <p><strong>Estado:</strong> {employee.status}</p>
                 </div>
               </Link>
             ))}

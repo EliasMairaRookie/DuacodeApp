@@ -69,16 +69,16 @@ const EmpleadoEspecifico = () => {
             <img src={employee.picture} alt={employee.name} className="imagen" />
             <h2 className="h2">{employee.name}</h2>
             <p className="p"><strong>Id:</strong> {employee.employee_id}</p>
-            <p className="p"><strong>Email:</strong> {employee.email}</p>
-            <p className="p"><strong>Phone:</strong> {employee.phone}</p>
-            <p className="p"><strong>Job Title:</strong> {employee.job_title}</p>
-            <p className="p"><strong>Status:</strong> {employee.status}</p>
-            <p className="p"><strong>Department:</strong> {employee.department}</p>
-            <p className="p"><strong>Office:</strong> {employee.office}</p>
+            <p className="p"><strong>Correo:</strong> {employee.email}</p>
+            <p className="p"><strong>Telefono:</strong> {employee.phone}</p>
+            <p className="p"><strong>Puesto:</strong> {employee.job_title}</p>
+            <p className="p"><strong>Estado:</strong> {employee.status}</p>
+            <p className="p"><strong>Departamento:</strong> {employee.department}</p>
+            <p className="p"><strong>Oficina:</strong> {employee.office}</p>
             <p className="p"><strong>Supervisor:</strong> {supervisorName || "No disponible"}</p>
-            <p className="p"><strong>Holidays:</strong> {employee.holidays}</p>
-            <p className="p"><strong>Birthday:</strong> {employee.birthday}</p>
-            <p className="p"><strong>Antiquity:</strong> {employee.antiquity}</p>
+            <p className="p"><strong>Vacaciones:</strong> {employee.holidays}</p>
+            <p className="p"><strong>Cumpleaños:</strong> {employee.birthday}</p>
+            <p className="p"><strong>Antiguedad:</strong> {employee.antiquity}</p>
           </div>
         )}
         <button className="button">
