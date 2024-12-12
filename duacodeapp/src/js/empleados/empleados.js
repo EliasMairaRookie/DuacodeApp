@@ -73,9 +73,7 @@ const Empleados = () => {
           placeholder="Busqueda por nombre"
           onChange={handleChange}
         />
-        <button className="btn-succes">
-          <FontAwesomeIcon icon={faSearch} />
-        </button>
+
       </div>
 
       <WithLoader isLoading={isLoading}> {/* Aquí se envuelve solo la parte de carga */}

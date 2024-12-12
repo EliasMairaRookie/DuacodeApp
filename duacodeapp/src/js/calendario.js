@@ -135,9 +135,7 @@ const Calendario = () => {
               placeholder="Buscar por nombre"
               onChange={handleChange}
             />
-            <button className="btn-succes">
-              <FontAwesomeIcon icon={faSearch} />
-            </button>
+
           </div>
 
           {primerEvento ? (
