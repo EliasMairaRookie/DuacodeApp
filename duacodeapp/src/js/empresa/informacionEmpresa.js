@@ -1,6 +1,7 @@
 import MenuEmpresa from "./menuEmpresa";
 import Cabecera from "../cabecera";
 import '../../css/empresa/informacionEmpresa.css';
+import imagen from '../../imagenes/duacoders-desk-1.webp';
 
 const InformacionEmpresa = () => {
     return (
@@ -17,6 +18,9 @@ const InformacionEmpresa = () => {
                         Nos enorgullecemos de ofrecer productos personalizados y de alta calidad, que van desde aplicaciones de gestión empresarial hasta plataformas de comunicación interna.
                     </p>
                 </div>
+            </div>
+            <div className="imageninfoEmpresa">
+                <img src={imagen}></img>
             </div>
             <div className="informacionExtra">
                 <p>

@@ -52,6 +52,7 @@ const DistribucionInfo = () => {
             <Cabecera activePage="distribucionInfo" />
             <MenuDistribucionInfo />
             <WithLoader isLoading={isLoading}></WithLoader>
+            
             {/* Mapa de Galicia */}
             {selectedOffice === 'Galicia' && (
                 <div className="mapa">
@@ -61,7 +62,7 @@ const DistribucionInfo = () => {
                     {filteredRooms.map(room => (
                         <div
                             key={room.room_id}
-                            className={`habitacion ${selectedRoomId === room.room_id ? 'highlighted' : ''}`}
+                            className={`habitacion ${room.occupied ? 'occupied' : ''} ${selectedRoomId === room.room_id ? 'highlighted' : ''}`}
                             onClick={() => handleRoomSelect(room.room_id)}
                         >
                             {room.name}
@@ -82,7 +83,7 @@ const DistribucionInfo = () => {
                     {filteredRooms.map(room => (
                         <div
                             key={room.room_id}
-                            className={`habitacion ${selectedRoomId === room.room_id ? 'highlighted' : ''}`}
+                            className={`habitacion ${room.occupied ? 'occupied' : ''} ${selectedRoomId === room.room_id ? 'highlighted' : ''}`}
                             onClick={() => handleRoomSelect(room.room_id)}
                         >
                             {room.name}

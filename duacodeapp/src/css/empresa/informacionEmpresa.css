@@ -19,17 +19,47 @@
 
 /* main content ajustes.css */
 .informacion-lateralMenu {
-    width: 60%;
+    width: 90%;
+    height: 150px;
     display: flex;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .colocarInfoLateral{
     text-align: center;
 }
 
-.informacionExtra{
-    width: 100%;
-    padding: 0% 10%;
-    text-align: center;
-    
+/* Imagen */
+.imageninfoEmpresa {
+    display: flex;
+    justify-content: center;
+    margin: 40px 0;
+}
+
+.imageninfoEmpresa img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 25px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Información Extra */
+.informacionExtra {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    line-height: 1.6;
+}
+
+.informacionExtra p {
+    margin-bottom: 10px;
+}
+
+/* Colores y detalles visuales */
+.informacionExtra,.informacion-lateralMenu {
+    border-left: 5px solid #DF1882;
 }

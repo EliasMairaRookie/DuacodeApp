@@ -221,6 +221,20 @@
         color: #DF1882; /* Destacar los títulos en el color principal */
     }
     
+    .habitacion.occupied {
+        background-color: #FF4D4D; /* Fondo rojo para salas ocupadas */
+        color: #fff; /* Texto blanco para contraste */
+        border: 1px solid #CC0000; /* Borde oscuro */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Sombras para profundidad */
+    }
+    
+    /* Hover para habitaciones ocupadas */
+    .habitacion.occupied:hover {
+        background-color: #FF6666; /* Más claro al pasar el cursor */
+        box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+    }
+
+
     @keyframes fadeIn {
         from {
             opacity: 0;
